@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\UserProduct;
+use App\Product;
+use Auth;
+
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,12 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.content');
+        return view('product.content');
     }
 
     public function homepage()
     {
-        return view('users.content');
+        return view('product.content');
     }
 
     /**
@@ -28,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('product.create');
     }
 
     /**
@@ -37,10 +39,25 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        UserProduct::create(request(['product_name','product_description','product_category']));
-        return view('users.create');
+    // public function store(Request $request, $id)
+    // {
+    //     $user_id = Auth::user()->id;
+    //     Product::create(request(['product_name', 'product_description', 'product_category', 'user_id' , 'image', 'image_url']));
+    //     return view('products.create');
+    // }
+
+    public function store() {
+        $products = new Product();
+        $products->product_name = request('product_name');
+        $products->product_description = request('product_description');
+        $products->product_category = request('product_category');
+        $products->user_id = Auth::user()->id;
+        $products->image = request('image');
+        $products->image_url = request('image_url');
+        $products->save();
+
+        return redirect('/products');
+
     }
 
     /**
@@ -49,9 +66,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function showAll()
+    {
+        $product=Product::all();
+        // dd($user);
+        return view('product.show',compact('product'));
+    }
+    
     public function show($id)
     {
-        // return view('users.show');
+        // dd($user);
+        return view('product.show',compact('product'));
     }
 
     /**

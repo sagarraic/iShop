@@ -19,7 +19,7 @@
             <div class="container">
                 <div class="contact_form_inner">
                     <h3>Add a New Product</h3>
-                    <form class="contact_us_form row" action="{{ route('users.store') }}" method="POST" novalidate="novalidate">
+                    <form class="contact_us_form row" action="{{ route('products.store') }}" method="POST" novalidate="novalidate" enctype="multipart/form-data">
                     {{ csrf_field() }}
                         <div class="form-group col-lg-7">
                             <input type="text" class="form-control" name="product_name" placeholder="Product Name *">
