@@ -8,7 +8,7 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Shop</a></li>
-                <li class="current"><a href="#">Simple Product</a></li>
+                <li class="current"><a href="#">Single Product</a></li>
             </ul>
         </div>
     </div>
@@ -18,7 +18,7 @@
 <section class="product_details_area">
     <div class="container">
         <div class="row">
-            @foreach ($product as $product)
+            {{-- @foreach ($product as $product) --}}
             <div class="col-lg-4">
                 <div class="product_details_slider">
                     <div id="product_slider" class="rev_slider" data-version="5.3.1.6">
@@ -133,7 +133,7 @@
                 
             </div>
         </div>
-        @endforeach
+        {{-- @endforeach --}}
 
     </div>
 </div>

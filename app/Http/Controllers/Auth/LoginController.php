@@ -54,7 +54,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ( $user->role_id == 1 ) {
-            return redirect('admins/dashboard');
+            return redirect('admin/dashboard');
         }
         elseif ( $user->role_id == 2) {
             return redirect(route('homepage'));

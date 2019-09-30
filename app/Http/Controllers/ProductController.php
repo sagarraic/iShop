@@ -22,8 +22,7 @@ class ProductController extends Controller
     public function homepage()
     {
         $products = Product::all();
-
-        return view('product.content',compact('products'));
+        return view('product.content', compact('products'));
     }
 
     /**
@@ -55,6 +54,7 @@ class ProductController extends Controller
         $products->product_name = request('product_name');
         $products->product_description = request('product_description');
         $products->product_category = request('product_category');
+        $products->price = request('price');
         $products->user_id = Auth::user()->id;
         $products->image='image'.time().'.jpg';
         $request->image->move(public_path('/uploads'),$products->image);
@@ -62,8 +62,7 @@ class ProductController extends Controller
         // dd($products);      
         $products->save();
 
-        return redirect('/products');
-
+        return redirect(route('homepage'));
     }
 
     /**
@@ -72,24 +71,19 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     
     public function show($id)
     {
-        $product = Product::all();
+        $product = Product::find($id);
+        // dd($product->toArray());
         return view('product.show',compact('product'));
     }
 
-    public function myProduct()
+    public function myproducts(Product $product)
     {
-        $product = Product::all();
+        $user_id = auth()->user()->id;
+        $product = Product::where('user_id',$user_id)->get();
         return view('product.myproducts',compact('product'));
-    }
-
-    public function showAll()
-    {
-        $product = Product::all();
-        return view('product.showall',compact('product'));
     }
 
     /**
@@ -100,7 +94,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
+        return view('product.edit', compact('product'));
     }
 
     /**
@@ -112,7 +106,7 @@ class ProductController extends Controller
      */
     public function update(Product $product)
     {
-        $product->update(request(['product_name','product_description','product_category']));
+        $product->update(request(['product_name','product_description','product_category','price','image']));
         return redirect('/products');
     }
 

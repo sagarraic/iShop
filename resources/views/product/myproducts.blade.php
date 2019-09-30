@@ -1,16 +1,15 @@
 @extends('layouts.homepage')
-
 @section('content')
 
 	<!--================Categories Banner Area =================-->
         <section class="categories_banner_area">
             <div class="container">
                 <div class="c_banner_inner">
-                    <h3>All products</h3>
+                    <h3>My products List</h3>
                     <ul>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Shop</a></li>
-                        <li class="current"><a href="#">All products</a></li>
+                        <li class="current"><a href="#">My products</a></li>
                     </ul>
                 </div>
             </div>
@@ -64,7 +63,7 @@
                                         <div class="col-lg-8 col-md-6">
                                             <div class="c_product_text">
                                                 <h3>{{ $product->product_name }}</h3>
-                                                <h5>$45.05</h5>
+                                                <h5>Rs. {{ $product->price }}</h5>
                                                 <ul class="product_rating">
                                                     <li><a href="#"><i class="fa fa-star"></i></a></li>
                                                     <li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -76,9 +75,16 @@
                                                 <p>{{ $product->product_description }}</p>
                                                 <ul class="c_product_btn">
                                                     <li class="p_icon"><a href="/products/{{ $product->id }}"><i class="icon_search"></i></a></li>
-                                                    <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                                                    <li><a class="add_cart_btn" href="/products/{{ $product->id }}/edit">Edit</a></li>
                                                     <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                                                </ul><br>
+                                                <form action="/products/{{ $product->id }}" method="POST">
+                                                @method('DELETE') 
+                                                @csrf
+                                                <ul class="c_product_btn">
+                                                    <li><button name="submit" class="add_cart_btn">Delete Project</button></li>
                                                 </ul>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
