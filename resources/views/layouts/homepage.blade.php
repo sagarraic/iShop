@@ -104,17 +104,17 @@
                         </ul>
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown submenu active">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Home </a>
+                                <a class="nav-link dropdown-toggle" href="{{ route('homepage') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Home </a>
                             </li>
                             <li class="nav-item dropdown submenu">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Pages <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    {{-- @dd($user); --}}
-                                    {{-- @foreach ($user_products as $user_product) --}}
-                                        <li class="nav-item"><a class="nav-link" href="{{ route('products.showAll') }}">My Product List</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="{{ route('products.create') }}">Add Product</a></li>
+                                    {{-- @foreach ($products as $products) --}}
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('products.showAll') }}">All Product List</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{-- /products/{{ $products->id }} --}}">My Products </a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('products.create') }}">Add Product</a></li>
                                     {{-- @endforeach --}}
                                     
                                 </ul>

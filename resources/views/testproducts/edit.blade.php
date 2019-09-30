@@ -18,7 +18,7 @@
 			<label for="title" class="label">Description</label>
 
 			<div class="control">
-				<textarea name="product_description" class="textarea">{{  $product->product_description }}</textarea>
+				<textarea name="product_description" class="textarea">{{ $product->product_description }}</textarea>
 			</div>
 		</div>
 
@@ -26,7 +26,7 @@
 			<label for="title" class="label">Category</label>
 
 			<div class="control">
-				<input name="product_category" value="{{  $product->product_category }}">
+				<input name="product_category" value="{{ $product->product_category }}">
 			</div>
 		</div>
 

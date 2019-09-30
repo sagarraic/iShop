@@ -39,9 +39,9 @@
 .l_product_item{
     border: 1px solid #cccccc;
     margin-bottom: 30px;
-    .l_p_img{
+    .l_p_images{
         position: relative;
-        img{
+        images{
             max-width: 100%;
         }
     }
@@ -247,7 +247,7 @@
     }
 }
 .fillter_product_item{
-    .f_p_img{
+    .f_p_images{
         border: 1px solid #cccccc;
         position: relative;
     }
@@ -370,7 +370,7 @@
         }
     }
 }
-.p_list_img{
+.p_list_images{
     margin-left: -30px;
 }
 /* End Categories Product css
@@ -526,7 +526,7 @@
     &:last-child{
         margin-bottom: 0px;
     }
-    .c_product_img{
+    .c_product_images{
         position: relative;
         border: 1px solid #cccccc;
     }
@@ -655,7 +655,7 @@
             padding-right: 20px !important;
             .tp-thumbs-inner-wrapper{
                 .tp-thumb{
-                    .tp-thumb-img-wrap{
+                    .tp-thumb-images-wrap{
                         background: transparent;
                         padding: 0px;
                         border: 1px solid transparent;
@@ -665,7 +665,7 @@
                         }
                     }
                     &.selected{
-                        .tp-thumb-img-wrap{
+                        .tp-thumb-images-wrap{
                             border: 1px solid #000;
                         }
                     }    
@@ -1043,7 +1043,7 @@
                         font-size: 14px;
                     }
                 }
-                img{
+                images{
                     padding-bottom: 5px;
                 }
             }
@@ -1121,7 +1121,7 @@
                         padding-left: 4.5px;
                         padding-right: 4.5px; 
                     }
-                    img{
+                    images{
                         padding-top: 25px;
                     }
                     h3{

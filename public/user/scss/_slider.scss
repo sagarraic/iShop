@@ -102,7 +102,7 @@
         position: relative;
         overflow: hidden;
         z-index: 3;
-        img{
+        imagesw{
             transition: all 600ms linear;
         }
         &:before{
@@ -177,7 +177,7 @@
             }
         }
         &:hover{
-            img{
+            imagesw{
                 transform: scale(1.05);
             }
             &:before{

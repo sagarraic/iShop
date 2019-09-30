@@ -624,12 +624,12 @@
     function createByJson() {
         var jsonData = [					
             {description:'Choos your payment gateway', value:'', text:'Payment Gateway'},					
-            {image:'../img/icon/flag-1.png', description:'My life. My card...', value:'amex', text:'Amex'},
-            {image:'../img/icon/flag-1.png', description:'It pays to Discover...', value:'Discover', text:'Discover'},
-            {image:'../img/icon/flag-1.png', title:'For everything else...', description:'For everything else...', value:'Mastercard', text:'Mastercard'},
-            {image:'../img/icon/flag-1.png', description:'Sorry not available...', value:'cash', text:'Cash on devlivery', disabled:true},
-            {image:'../img/icon/flag-1.png', description:'All you need...', value:'Visa', text:'Visa'},
-            {image:'../img/icon/flag-1.png', description:'Pay and get paid...', value:'Paypal', text:'Paypal'}
+            {image:'../images/icon/flag-1.png', description:'My life. My card...', value:'amex', text:'Amex'},
+            {image:'../images/icon/flag-1.png', description:'It pays to Discover...', value:'Discover', text:'Discover'},
+            {image:'../images/icon/flag-1.png', title:'For everything else...', description:'For everything else...', value:'Mastercard', text:'Mastercard'},
+            {image:'../images/icon/flag-1.png', description:'Sorry not available...', value:'cash', text:'Cash on devlivery', disabled:true},
+            {image:'../images/icon/flag-1.png', description:'All you need...', value:'Visa', text:'Visa'},
+            {image:'../images/icon/flag-1.png', description:'Pay and get paid...', value:'Paypal', text:'Paypal'}
         ];
         $("#byjson").msDropDown({byJson:{data:jsonData, name:'payments2'}}).data("dd");
     }

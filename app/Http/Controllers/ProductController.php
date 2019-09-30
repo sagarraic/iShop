@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Product;
 use Auth;
+use File;
 
 use Illuminate\Http\Request;
 
@@ -20,7 +21,9 @@ class ProductController extends Controller
 
     public function homepage()
     {
-        return view('product.content');
+        $products = Product::all();
+
+        return view('product.content',compact('products'));
     }
 
     /**
@@ -46,14 +49,17 @@ class ProductController extends Controller
     //     return view('products.create');
     // }
 
-    public function store() {
+    public function store(Request $request) {
+
         $products = new Product();
         $products->product_name = request('product_name');
         $products->product_description = request('product_description');
         $products->product_category = request('product_category');
         $products->user_id = Auth::user()->id;
-        $products->image = request('image');
-        $products->image_url = request('image_url');
+        $products->image='image'.time().'.jpg';
+        $request->image->move(public_path('/uploads'),$products->image);
+        $products->image_url = '/uploads/'.$products->image;
+        // dd($products);      
         $products->save();
 
         return redirect('/products');
@@ -67,17 +73,23 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function showAll()
-    {
-        $product=Product::all();
-        // dd($user);
-        return view('product.show',compact('product'));
-    }
     
     public function show($id)
     {
-        // dd($user);
+        $product = Product::all();
         return view('product.show',compact('product'));
+    }
+
+    public function myProduct()
+    {
+        $product = Product::all();
+        return view('product.myproducts',compact('product'));
+    }
+
+    public function showAll()
+    {
+        $product = Product::all();
+        return view('product.showall',compact('product'));
     }
 
     /**
@@ -86,9 +98,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -98,9 +110,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Product $product)
     {
-        //
+        $product->update(request(['product_name','product_description','product_category']));
+        return redirect('/products');
     }
 
     /**
@@ -109,8 +122,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect('/products');
     }
 }

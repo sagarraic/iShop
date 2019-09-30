@@ -1,329 +1,269 @@
 @extends('layouts.homepage')
-
 @section('content')
-
-	<!--================Categories Banner Area =================-->
-        <section class="categories_banner_area">
-            <div class="container">
-                <div class="c_banner_inner">
-                    <h3>shop grid with left sidebar</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li class="current"><a href="#">Shop Grid with Left Sidebar</a></li>
+<!--================Categories Banner Area =================-->
+<section class="categories_banner_area">
+    <div class="container">
+        <div class="c_banner_inner">
+            <h3>simple product</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li class="current"><a href="#">Simple Product</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--================End Categories Banner Area =================-->
+<!--================Product Details Area =================-->
+<section class="product_details_area">
+    <div class="container">
+        <div class="row">
+            @foreach ($product as $product)
+            <div class="col-lg-4">
+                <div class="product_details_slider">
+                    <div id="product_slider" class="rev_slider" data-version="5.3.1.6">
+                        <ul>    <!-- SLIDE  -->
+                        <li data-index="rs-137221490" data-transition="scaledownfrombottom" data-slotamount="7"  data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500"  data-thumb="img/product/product-details/p-details-tab-1.jpg"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-title="Ishtar X Tussilago" data-param1="25/08/2015" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="{{ $product->image_url }}"  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
+                            <!-- LAYERS -->
+                        </li>
+                        <!-- SLIDE  -->
+                        <li data-index="rs-136228343" data-transition="scaledownfrombottom" data-slotamount="7"  data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500"  data-thumb="img/product/product-details/p-details-tab-2.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Los Angeles" data-param1="13/08/2015" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="images/product/product-details/p-details-big-1.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
+                            <!-- LAYERS -->
+                        </li>
+                        <!-- SLIDE  -->
+                        <li data-index="rs-135960434" data-transition="scaledownfrombottom" data-slotamount="7"  data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500"  data-thumb="img/product/product-details/p-details-tab-3.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="The Colors of Feelings" data-param1="11/08/2015" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="images/product/product-details/p-details-big-1.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
+                            <!-- LAYERS -->
+                            
+                        </li>
+                        <!-- SLIDE  -->
+                        <li data-index="rs-134008155" data-transition="scaledownfrombottom" data-slotamount="7"  data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500"  data-thumb="img/product/product-details/p-details-tab-4.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Powerful Iceland" data-param1="20/07/2015" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="images/product/product-details/p-details-big-1.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
+                            <!-- LAYERS -->
+                        </li>
+                        <!-- SLIDE  -->
+                        <li data-index="rs-134774977" data-transition="scaledownfrombottom" data-slotamount="7"  data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500"  data-thumb="img/product/product-details/p-details-tab-1.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Paris Poetry" data-param1="28/07/2015" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="images/product/product-details/p-details-big-1.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
+                            <!-- LAYERS -->
+                        </li>
+                        <!-- SLIDE  -->
+                        <li data-index="rs-134208766" data-transition="scaledownfrombottom" data-slotamount="7"  data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500"  data-thumb="img/product/product-details/p-details-tab-2.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Creativity Room - New Fubiz 2015" data-param1="22/07/2015" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="images/product/product-details/p-details-big-1.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
+                            <!-- LAYERS -->
+                        </li>
+                        <!-- SLIDE  -->
+                        <li data-index="rs-132884121" data-transition="scaledownfrombottom" data-slotamount="7"  data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500"  data-thumb="img/product/product-details/p-details-tab-3.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Animated GIFS - New Fubiz 2015" data-param1="07/07/2015" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="images/product/product-details/p-details-big-1.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
+                            <!-- LAYERS -->
+                        </li>
+                        <!-- SLIDE  -->
+                        <li data-index="rs-130740141" data-transition="scaledownfrombottom" data-slotamount="7"  data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500"  data-thumb="img/product/product-details/p-details-tab-4.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Naive New Beaters - Run Away" data-param1="15/06/2015" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="images/product/product-details/p-details-big-1.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
+                            <!-- LAYERS -->
+                        </li>
+                        <!-- SLIDE  -->
                     </ul>
                 </div>
             </div>
-        </section>
-        <!--================End Categories Banner Area =================-->
-        
-        <!--================Categories Product Area =================-->
-        <section class="categories_product_main p_80">
-            <div class="container">
-                <div class="categories_main_inner">
-                    <div class="row row_disable">
-                        <div class="col-lg-9 float-md-right">
-                            <div class="showing_fillter">
-                                <div class="row m0">
-                                    <div class="first_fillter">
-                                        <h4>Showing 1 to 12 of 30 total</h4>
-                                    </div>
-                                    <div class="secand_fillter">
-                                        <h4>SORT BY :</h4>
-                                        <select class="selectpicker">
-                                            <option>Name</option>
-                                            <option>Name 2</option>
-                                            <option>Name 3</option>
-                                        </select>
-                                    </div>
-                                    <div class="third_fillter">
-                                        <h4>Show : </h4>
-                                        <select class="selectpicker">
-                                            <option>09</option>
-                                            <option>10</option>
-                                            <option>10</option>
-                                        </select>
-                                    </div>
-                                    <div class="four_fillter">
-                                        <h4>View</h4>
-                                        <a class="active" href="#"><i class="icon_grid-2x2"></i></a>
-                                        <a href="#"><i class="icon_grid-3x3"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="c_product_grid_details">
-                                <div class="c_product_item">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="c_product_img">
-                                                <img class="img-fluid" src="/user/images/product/l-product-2.jpg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8 col-md-6">
-                                            <div class="c_product_text">
-                                                <h3>Nike Max Air Vapor Power</h3>
-                                                <h5>$45.05</h5>
-                                                <ul class="product_rating">
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                </ul>
-                                                <h6>Available In <span>Stock</span></h6>
-                                                <p>Curabitur semper varius lectus sed consequat. Nam accumsan dapibus sem, sed lobortis nisi porta vitae. Ut quam tortor, facilisis nec laoreet consequat, malesuada a massa. Proin pretium tristique leo et imperdiet.</p>
-                                                <ul class="c_product_btn">
-                                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                                    <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
-                                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="c_product_item">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="c_product_img">
-                                                <img class="img-fluid" src="/user/images/product/l-product-4.jpg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8 col-md-6">
-                                            <div class="c_product_text">
-                                                <h3>Max Air Vapor Power</h3>
-                                                <h5>$110.50</h5>
-                                                <ul class="product_rating">
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                </ul>
-                                                <h6>Available In <span>Stock</span></h6>
-                                                <p>Curabitur semper varius lectus sed consequat. Nam accumsan dapibus sem, sed lobortis nisi porta vitae. Ut quam tortor, facilisis nec laoreet consequat, malesuada a massa. Proin pretium tristique leo et imperdiet.</p>
-                                                <ul class="c_product_btn">
-                                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                                    <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
-                                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="c_product_item">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="c_product_img">
-                                                <img class="img-fluid" src="/user/images/product/l-product-7.jpg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8 col-md-6">
-                                            <div class="c_product_text">
-                                                <h3>Fossil Watch</h3>
-                                                <h5>$250</h5>
-                                                <ul class="product_rating">
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                </ul>
-                                                <h6>Available In <span>Stock</span></h6>
-                                                <p>Curabitur semper varius lectus sed consequat. Nam accumsan dapibus sem, sed lobortis nisi porta vitae. Ut quam tortor, facilisis nec laoreet consequat, malesuada a massa. Proin pretium tristique leo et imperdiet.</p>
-                                                <ul class="c_product_btn">
-                                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                                    <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
-                                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="c_product_item">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="c_product_img">
-                                                <img class="img-fluid" src="/user/images/product/l-product-8.jpg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8 col-md-6">
-                                            <div class="c_product_text">
-                                                <h3>Jens T-Shirt</h3>
-                                                <h5>$45.05</h5>
-                                                <ul class="product_rating">
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                </ul>
-                                                <h6>Available In <span>Stock</span></h6>
-                                                <p>Curabitur semper varius lectus sed consequat. Nam accumsan dapibus sem, sed lobortis nisi porta vitae. Ut quam tortor, facilisis nec laoreet consequat, malesuada a massa. Proin pretium tristique leo et imperdiet.</p>
-                                                <ul class="c_product_btn">
-                                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                                    <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
-                                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <nav aria-label="Page navigation example" class="pagination_area">
-                                    <ul class="pagination">
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                        <li class="page-item next"><a class="page-link" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 float-md-right">
-                            <div class="categories_sidebar">
-                                <aside class="l_widgest l_p_categories_widget">
-                                    <div class="l_w_title">
-                                        <h3>Categories</h3>
-                                    </div>
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Men’s Fashion
-                                                <i class="icon_plus" aria-hidden="true"></i>
-                                                <i class="icon_minus-06" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Women’s Fashion
-                                                <i class="icon_plus" aria-hidden="true"></i>
-                                                <i class="icon_minus-06" aria-hidden="true"></i>
-                                            </a>
-                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li class="nav-item"><a class="nav-link" href="#">Hoodies & Sweatshirts</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="#">Jackets & Coats</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="#">Blouses & Shirts</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Phone & Accessories
-                                                <i class="icon_plus" aria-hidden="true"></i>
-                                                <i class="icon_minus-06" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Electronic Appliance
-                                                <i class="icon_plus" aria-hidden="true"></i>
-                                                <i class="icon_minus-06" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link disabled" href="#">Computer & Networking
-                                                <i class="icon_plus" aria-hidden="true"></i>
-                                                <i class="icon_minus-06" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link disabled" href="#">TV, Audiio & Gaming
-                                                <i class="icon_plus" aria-hidden="true"></i>
-                                                <i class="icon_minus-06" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link disabled" href="#">Office Supplies
-                                                <i class="icon_plus" aria-hidden="true"></i>
-                                                <i class="icon_minus-06" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link disabled" href="#">All Categories
-                                                <i class="icon_plus" aria-hidden="true"></i>
-                                                <i class="icon_minus-06" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </aside>
-                                <aside class="l_widgest l_fillter_widget">
-                                    <div class="l_w_title">
-                                        <h3>Filter section</h3>
-                                    </div>
-                                    <div id="slider-range" class="ui_slider"></div>
-                                    <label for="amount">Price:</label>
-                                    <input type="text" id="amount" readonly>
-                                </aside>
-                                <aside class="l_widgest l_color_widget">
-                                    <div class="l_w_title">
-                                        <h3>Color</h3>
-                                    </div>
-                                    <ul>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#"></a></li>
-                                    </ul>
-                                </aside>
-                                <aside class="l_widgest l_menufacture_widget">
-                                    <div class="l_w_title">
-                                        <h3>Manufacturer</h3>
-                                    </div>
-                                    <ul>
-                                        <li><a href="#">Nigel Cabourn.</a></li>
-                                        <li><a href="#">Cacharel.</a></li>
-                                        <li><a href="#">Calibre (Menswear)</a></li>
-                                        <li><a href="#">Calvin Klein.</a></li>
-                                        <li><a href="#">Camilla and Marc</a></li>
-                                    </ul>
-                                </aside>
-                                <aside class="l_widgest l_feature_widget">
-                                    <div class="l_w_title">
-                                        <h3>Featured Products</h3>
-                                    </div>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="/user/images/product/featured-product/f-p-5.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>Jeans with <br /> Frayed Hems</h4>
-                                            <h5>$45.05</h5>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="/user/images/product/featured-product/f-p-6.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>Crysp Denim<br />Montana</h4>
-                                            <h5>$45.05</h5>
-                                        </div>
-                                    </div>
-                                </aside>
-                            </div>
-                        </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="product_details_text">
+                <h3>{{ $product->product_name }}</h3>
+                <ul class="p_rating">
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                </ul>
+                <div class="add_review">
+                    <a href="#">5 Reviews</a>
+                    <a href="#">Add your review</a>
+                </div>
+                <h6>Available In <span>Stock</span></h6>
+                <h4>$45.05</h4>
+                <p>{{ $product->product_description }}</p>
+                <div class="p_color">
+                    <h4 class="p_d_title">color <span>*</span></h4>
+                    <ul class="color_list">
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                    </ul>
+                </div>
+                <div class="p_color">
+                    <h4 class="p_d_title">size <span>*</span></h4>
+                    <select class="selectpicker">
+                        <option>Select your size</option>
+                        <option>Select your size M</option>
+                        <option>Select your size XL</option>
+                    </select>
+                </div>
+                <div class="quantity">
+                    <div class="custom">
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="icon_minus-06"></i></button>
+                        <input type="text" name="qty" id="sst" maxlength="12" value="01" title="Quantity:" class="input-text qty">
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="icon_plus"></i></button>
+                    </div>
+                    <a class="add_cart_btn" href="#">add to cart</a>
+                </div>
+                <div class="shareing_icon">
+                    <h5>share :</h5>
+                    <ul>
+                        <li><a href="#"><i class="social_facebook"></i></a></li>
+                        <li><a href="#"><i class="social_twitter"></i></a></li>
+                        <li><a href="#"><i class="social_pinterest"></i></a></li>
+                        <li><a href="#"><i class="social_instagram"></i></a></li>
+                        <li><a href="#"><i class="social_youtube"></i></a></li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+        @endforeach
+
+    </div>
+</div>
+</section>
+<!--================End Product Details Area =================-->
+<!--================Product Description Area =================-->
+<section class="product_description_area">
+<div class="container">
+    <nav class="tab_menu">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Product Description</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Reviews (1)</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Tags</a>
+            <a class="nav-item nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-controls="nav-info" aria-selected="false">additional information</a>
+            <a class="nav-item nav-link" id="nav-gur-tab" data-toggle="tab" href="#nav-gur" role="tab" aria-controls="nav-gur" aria-selected="false">gurantees</a>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  Emo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+        </div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <h4>Rocky Ahmed</h4>
+            <ul>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+            </ul>
+        </div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  Emo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+        </div>
+        <div class="tab-pane fade" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  Emo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+        </div>
+        <div class="tab-pane fade" id="nav-gur" role="tabpanel" aria-labelledby="nav-gur-tab">
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  Emo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+        </div>
+    </div>
+</div>
+</section>
+<!--================End Product Details Area =================-->
+<!--================End Related Product Area =================-->
+<section class="related_product_area">
+<div class="container">
+    <div class="related_product_inner">
+        <h2 class="single_c_title">Related Product</h2>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="l_product_item">
+                    <div class="l_p_img">
+                        <img class="img-fluid" src="img/product/related-product/r-product-1.jpg" alt="">
+                    </div>
+                    <div class="l_p_text">
+                        <ul>
+                            <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                            <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                            <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                        </ul>
+                        <h4>Run Tracksuit</h4>
+                        <h5>$85.50</h5>
                     </div>
                 </div>
             </div>
-        </section>
-        <!--================End Categories Product Area =================-->
-
+            <div class="col-lg-3 col-sm-6">
+                <div class="l_product_item">
+                    <div class="l_p_img">
+                        <img class="img-fluid" src="img/product/related-product/r-product-2.jpg" alt="">
+                        <h5 class="new">New</h5>
+                    </div>
+                    <div class="l_p_text">
+                        <ul>
+                            <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                            <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                            <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                        </ul>
+                        <h4>Nike Men Trouser</h4>
+                        <h5><del>$130.50</del>  $110</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="l_product_item">
+                    <div class="l_p_img">
+                        <img class="img-fluid" src="img/product/related-product/r-product-3.jpg" alt="">
+                    </div>
+                    <div class="l_p_text">
+                        <ul>
+                            <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                            <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                            <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                        </ul>
+                        <h4>Nike Track Pants</h4>
+                        <h5>$250.00</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="l_product_item">
+                    <div class="l_p_img">
+                        <img class="img-fluid" src="img/product/related-product/r-product-4.jpg" alt="">
+                        <h5 class="sale">Sale</h5>
+                    </div>
+                    <div class="l_p_text">
+                        <ul>
+                            <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                            <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                            <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                        </ul>
+                        <h4>Therma Pants</h4>
+                        <h5>$45.50</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav aria-label="Page navigation example" class="pagination_area">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">6</a></li>
+                <li class="page-item next"><a class="page-link" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+</section>
+<!--================End Related Product Area =================-->
 @endsection
