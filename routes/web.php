@@ -22,10 +22,14 @@ Route::get('/logout','HomeController@logOut');
 Route::get('verify/{email}/{verifyToken}','Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
 
 // Admin Route Start
-Route::get('admin/dashboard', 'AdminController@index')->name('dashboard');
+Route::prefix('admin')->middleware(['isAdmin'])->group(function(){
+	Route::get('dashboard', 'AdminController@index')->name('dashboard');
+	Route::get('category-control','CategoryController@index')->name('admin.category');
+	Route::resource('categories','CategoryController');
+});
 
 
-// Product Route Start
+// User Route Start
 Route::get('users/homepage', 'ProductController@homepage')->name('homepage');
 Route::get('users/my-products','ProductController@myproducts')->name('products.myproducts');
 Route::resource('products','ProductController');

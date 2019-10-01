@@ -251,7 +251,7 @@ section {
 }
 
 .section__content--p30 {
-    padding: 0 30px;
+    padding: 0 0;
 }
 
 @media (max-width: 991px) {
@@ -1180,7 +1180,7 @@ section {
     position: fixed;
     top: 0;
     right: 0;
-    left: 300px;
+    left: 240px;
     height: 75px;
     z-index: 3;
 }
@@ -1568,7 +1568,7 @@ section {
 }
 
 .menu-sidebar {
-    width: 300px;
+    width: 240px;
     position: fixed;
     left: 0;
     top: 0;
