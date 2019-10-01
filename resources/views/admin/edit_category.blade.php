@@ -8,7 +8,7 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
-                            Add a new <strong>category</strong>
+                            Edit a existing <strong>category</strong>
                         </div>
                         <div class="card-body card-block">
                             <form action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -18,7 +18,7 @@
                                         <label for="text-input" class="form-control-label">Category Name</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" name="category_name" placeholder="Enter category name" class="form-control">
+                                        <input type="text" name="category_name" value="{{ $category->category_name }}" placeholder="Enter category name" class="form-control">
                                         <small class="form-text text-muted">Enter category name</small>
                                     </div>
                                 </div>
@@ -27,7 +27,7 @@
                                         <label for="textarea-input" class="form-control-label">Description</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <textarea name="category_description" id="textarea-input" rows="9" placeholder="Description..." class="form-control"></textarea>
+                                        <textarea name="category_description" id="textarea-input" rows="9" placeholder="Description..." class="form-control">{{ $category->category_description }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row form-group">
