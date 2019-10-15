@@ -7,7 +7,7 @@
                     <h3>Add Product</h3>
                     <ul>
                         <li><a href="#">Home</a></li>
-                        <li><a href="contact.html">Add Product</a></li>
+                        <li><a href="{{ route('products.create') }}">Add Product</a></li>
                     </ul>
                 </div>
             </div>
@@ -27,8 +27,18 @@
                         <div class="form-group col-lg-7">
                             <textarea class="form-control" name="product_description" rows="1" placeholder="Product Description"></textarea>
                         </div>
+                        {{-- @foreach($Categories as $Category)
+                            <div class="form-group col-lg-7">
+                                <input type="text" class="form-control" name="product_category" placeholder="Product Category">
+                            </div>
+                        @endforeach --}}
                         <div class="form-group col-lg-7">
-                            <input type="text" class="form-control" name="product_category" placeholder="Product Category">
+                            <select name="product_category" class="form-control">
+                                <option value="">Select an category...</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" class="form-group col-lg-7">{{ $category->category_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group col-lg-7">
                             <input type="number" class="form-control" name="price" placeholder="Product Price">

@@ -78,8 +78,8 @@
                                     <td><img style="height: 50px; width: 50px;" src="{{ $category->image_url }}" alt=""></td>
                                     <td>
                                         <div class="table-data-feature">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                            <i class="zmdi zmdi-mail-send"></i>
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                            <i class="zmdi zmdi-more"></i>
                                             </button>
                                             <a href="/admin/categories/{{ $category->id }}/edit" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="zmdi zmdi-edit"></i>
@@ -91,46 +91,16 @@
                                                     <i class="zmdi zmdi-delete"></i>
                                                     </button>
                                             </form>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                            <i class="zmdi zmdi-m   ore"></i>
-                                            </button>
+                                            
                                         </div>
                                     </td>
-                                    @endforeach
                                 </tr>
+                                @endforeach
                             <tr class="spacer"></tr>
                         </tbody>
                     </table>
                 </div>
                 <!-- END DATA TABLE -->
-                </div>
-            </div>
-            <div class="row m-t-30">
-                <div class="col-md-12">
-                    <!-- DATA TABLE-->
-                    <div class="table-responsive m-b-40">
-                        <table class="table table-borderless table-data3">
-                            <thead>
-                                <tr>
-                                    <th>date</th>
-                                    <th>type</th>
-                                    <th>description</th>
-                                    <th>status</th>
-                                    <th>price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2018-09-29 05:57</td>
-                                    <td>Mobile</td>
-                                    <td>iPhone X 64Gb Grey</td>
-                                    <td class="process">Processed</td>
-                                    <td>$999.00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- END DATA TABLE-->
                 </div>
             </div>
             <div class="row">

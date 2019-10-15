@@ -21,6 +21,7 @@ Route::get('/logout','HomeController@logOut');
 
 Route::get('verify/{email}/{verifyToken}','Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
 
+
 // Admin Route Start
 Route::prefix('admin')->middleware(['isAdmin'])->group(function(){
 	Route::get('dashboard','AdminController@index')->name('dashboard');
