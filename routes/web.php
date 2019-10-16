@@ -25,8 +25,9 @@ Route::get('verify/{email}/{verifyToken}','Auth\RegisterController@sendEmailDone
 // Admin Route Start
 Route::prefix('admin')->middleware(['isAdmin'])->group(function(){
 	Route::get('dashboard','AdminController@index')->name('dashboard');
-	Route::get('category-control','CategoryController@index')->name('admin.category');
-	Route::resource('categories','CategoryController');
+	Route::get('category-control','Admin\CategoryController@index')->name('admin.category');
+	Route::get('product-control','Admin\ProductController@index')->name('admin.product');
+	Route::resource('categories','Admin\CategoryController');
 });
 
 

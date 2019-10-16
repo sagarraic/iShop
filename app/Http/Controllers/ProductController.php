@@ -44,28 +44,16 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request, $id)
-    // {
-    //     $user_id = Auth::user()->id;
-    //     Product::create(request(['product_name', 'product_description', 'product_category', 'user_id' , 'image', 'image_url']));
-    //     return view('products.create');
-    // }
 
     public function store(Request $request) {
 
-        $products = new Product();
-        $products->product_name = request('product_name');
-        $products->product_description = request('product_description');
-        $products->product_category = request('product_category');
-        $products->price = request('price');
-        $products->user_id = Auth::user()->id;
-        $products->image='image'.time().'.jpg';
-        $request->image->move(public_path('/uploads'),$products->image);
-        $products->image_url = '/uploads/'.$products->image;
-        // dd($products);      
-        $products->save();
+        $image= request('image');
+        
+        $new_name = rand() . '.' . $image-> getClientOriginalExtension();
+        $image->move(public_path('/uploads'),$new_name);
+        Product::create(array_merge(['image'=>$new_name,'image_url'=>public_path('uploads/'.$new_name),'user_id'=>1],$request->except(['image'])));
 
-        return redirect(route('homepage'));
+        return redirect(route('homepage'))->with('success','Image upload successfully');
     }
 
     /**

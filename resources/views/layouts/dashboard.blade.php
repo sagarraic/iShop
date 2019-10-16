@@ -48,7 +48,7 @@
                                 <i class="fas fa-user-circle"></i>Users</a>
                             </li>
                             <li>
-                                <a href="chart.html">
+                                <a href="{{ route('admin.product') }}">
                                 <i class="fas fa-bar-chart"></i>Products</a>
                             </li>
                             <li>

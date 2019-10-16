@@ -42,6 +42,7 @@
                         </div>
                         <div class="form-group col-lg-7">
                             <input type="number" class="form-control" name="price" placeholder="Product Price">
+                            {{-- <p class="help is-danger">{{ $errors->first('title') }}</p> --}}
                         </div>
                         <div class="form-group col-lg-7">
                             <input type="file" class="form-control" name="image">
