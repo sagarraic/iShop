@@ -38,15 +38,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $categories = new Category();
-        $categories->category_name = request('category_name');
-        $categories->category_description = request('category_description');
-        $categories->image='image'.time().'.jpg';
-        $request->image->move(public_path('/uploadcategories'),$categories->image);
-        $categories->image_url = '/uploadcategories/'.$categories->image;
-        $categories->save();
+        $image = request('image');
+        $new_name = rand() . '.' . $image-> getClientOriginalExtension();
+        $image->move(public_path('/uploads'),$new_name);
+        Category::create(array_merge(['image'=>$new_name,'image_url'=>'http://127.0.0.1:8888/laravel/ishop/public/uploads/'.$new_name],$request->except(['image'])));
 
-        return redirect(route('dashboard'));
+        return redirect(route('admin.category'))->with('success','Image upload successfully');
     }
 
     /**
@@ -66,7 +63,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
         return view('admin.edit_category', compact('category'));
     }
@@ -90,7 +87,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         $category->delete();
         return redirect('admin/categories');

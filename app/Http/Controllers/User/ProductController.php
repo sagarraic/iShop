@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
 use Auth;
 use File;
-
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -20,7 +20,7 @@ class ProductController extends Controller
     {
         return view('product.content');
     }
-
+    
     public function homepage()
     {
         $products = Product::all();
@@ -33,7 +33,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $categories = Category::all();
         return view('product.create', compact('categories'));
     }
@@ -44,14 +44,12 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-    public function store(Request $request) {
-
-        $image= request('image');
-        
+    public function store(Request $request)
+    {
+        $image = request('image');
         $new_name = rand() . '.' . $image-> getClientOriginalExtension();
         $image->move(public_path('/uploads'),$new_name);
-        Product::create(array_merge(['image'=>$new_name,'image_url'=>public_path('uploads/'.$new_name),'user_id'=>1],$request->except(['image'])));
+        Product::create(array_merge(['image'=>$new_name,'image_url'=>'http://127.0.0.1:8888/laravel/ishop/public/uploads/'.$new_name,'user_id'=>1],$request->except(['image'])));
 
         return redirect(route('homepage'))->with('success','Image upload successfully');
     }
@@ -62,11 +60,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
     public function show($id)
     {
         $product = Product::find($id);
-        // dd($product->toArray());
         return view('product.show',compact('product'));
     }
 
@@ -95,7 +91,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Product $product)
+    public function update(Request $request, $id)
     {
         $product->update(request(['product_name','product_description','product_category','price','image']));
         return redirect('/products');

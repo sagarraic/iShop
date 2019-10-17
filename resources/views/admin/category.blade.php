@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 @section('content')
 <!-- MAIN CONTENT-->
+<img src="file://E:\xampp\htdocs\laravel\ishop\public\uploads\809616723.jpg">
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
@@ -30,7 +31,7 @@
                             <i class="zmdi zmdi-filter-list"></i>filters</button>
                         </div>
                         <div class="table-data__tool-right">
-                            <a href="{{ route('categories.create') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <a href="{{ route('admin.categories.create') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                             <i class="zmdi zmdi-plus"></i>add item</a>
                             <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
                                 <select class="js-select2" name="type">
@@ -75,7 +76,7 @@
                                     <td>
                                         <span class="status--process">Processed</span>
                                     </td>
-                                    <td><img style="height: 50px; width: 50px;" src="{{ $category->image_url }}" alt=""></td>
+                                    <td><img style="height: 50px;" src="{{ $category->image_url }}" alt=""></td>
                                     <td>
                                         <div class="table-data-feature">
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="More">

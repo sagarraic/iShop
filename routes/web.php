@@ -23,17 +23,18 @@ Route::get('verify/{email}/{verifyToken}','Auth\RegisterController@sendEmailDone
 
 
 // Admin Route Start
-Route::prefix('admin')->middleware(['isAdmin'])->group(function(){
+Route::prefix('admin')->name('admin.')->middleware(['isAdmin'])->group(function(){
 	Route::get('dashboard','AdminController@index')->name('dashboard');
-	Route::get('category-control','Admin\CategoryController@index')->name('admin.category');
-	Route::get('product-control','Admin\ProductController@index')->name('admin.product');
+	Route::get('category-control','Admin\CategoryController@index')->name('category');
 	Route::resource('categories','Admin\CategoryController');
+	Route::get('product-control','Admin\ProductController@index')->name('product');
+	Route::resource('products','Admin\ProductController');
 });
 
 
 // User Route Start
-Route::get('users/homepage', 'ProductController@homepage')->name('homepage');
-Route::get('users/my-products','ProductController@myproducts')->name('products.myproducts');
-Route::resource('products','ProductController');
+Route::get('users/homepage','User\ProductController@homepage')->name('homepage');
+Route::get('users/my-products','User\ProductController@myproducts')->name('products.myproducts');
+Route::resource('products','User\ProductController');
 
 

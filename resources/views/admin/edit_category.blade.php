@@ -11,7 +11,7 @@
                             Edit a existing <strong>category</strong>
                         </div>
                         <div class="card-body card-block">
-                            <form action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 @csrf
                                 <div class="row form-group">
                                     <div class="col col-md-3">

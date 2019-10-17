@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // return view('admin.create_product');
+        return view('admin.create_product');
     }
 
     /**
@@ -35,7 +35,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image = request('image');
+        $new_name = rand() . '.' . $image-> getClientOriginalExtension();
+        $image->move(public_path('/uploads'),$new_name);
+        Product::create(array_merge(['image'=>$new_name,'image_url'=>public_path('uploads/'.$new_name),'user_id'=>1],$request->except(['image'])));
+
+        return redirect(route('homepage'))->with('success','Image upload successfully');
     }
 
     /**
@@ -55,9 +60,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $Product)
     {
-        //
+        return view('admin.edit_product', compact('product'));
     }
 
     /**
@@ -69,7 +74,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product->update(request(['product_name','product_description','image']));
+        return redirect('admin/products');
     }
 
     /**
@@ -80,6 +86,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product->delete();
+        return redirect('admin/products');
     }
 }
