@@ -29,6 +29,9 @@ Route::prefix('admin')->name('admin.')->middleware(['isAdmin'])->group(function(
 	Route::resource('categories','Admin\CategoryController');
 	Route::get('product-control','Admin\ProductController@index')->name('product');
 	Route::resource('products','Admin\ProductController');
+	Route::get('user-control','Admin\UserController@index')->name('user');
+	Route::resource('users','Admin\UserController');
+
 });
 
 

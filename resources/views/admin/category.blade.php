@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
+@section('categories','active')
 @section('content')
 <!-- MAIN CONTENT-->
-<img src="file://E:\xampp\htdocs\laravel\ishop\public\uploads\809616723.jpg">
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
@@ -32,7 +32,7 @@
                         </div>
                         <div class="table-data__tool-right">
                             <a href="{{ route('admin.categories.create') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                            <i class="zmdi zmdi-plus"></i>add item</a>
+                            <i class="zmdi zmdi-plus"></i>add category</a>
                             <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
                                 <select class="js-select2" name="type">
                                     <option selected="selected">Export</option>
@@ -79,9 +79,6 @@
                                     <td><img style="height: 50px;" src="{{ $category->image_url }}" alt=""></td>
                                     <td>
                                         <div class="table-data-feature">
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                            <i class="zmdi zmdi-more"></i>
-                                            </button>
                                             <a href="/admin/categories/{{ $category->id }}/edit" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="zmdi zmdi-edit"></i>
                                             </a>
@@ -90,8 +87,11 @@
                                                 @csrf
                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
-                                                    </button>
+                                                    </button><br>
                                             </form>
+                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                            <i class="zmdi zmdi-more"></i>
+                                            </button>
                                             
                                         </div>
                                     </td>

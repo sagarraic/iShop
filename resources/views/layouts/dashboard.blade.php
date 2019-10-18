@@ -39,23 +39,23 @@
                 <div class="menu-sidebar__content js-scrollbar1">
                     <nav class="navbar-sidebar">
                         <ul class="list-unstyled navbar__list">
-                            <li class="active has-sub">
+                            <li class="@yield('dashboard')">
                                 <a class="js-arrow" href="{{ route('admin.dashboard') }}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             </li>
-                            <li>
-                                <a href="#">
+                            <li class="@yield('users')">
+                                <a href="{{ route('admin.user') }}">
                                 <i class="fas fa-user-circle"></i>Users</a>
                             </li>
-                            <li>
+                            <li class="@yield('products')">
                                 <a href="{{ route('admin.product') }}">
                                 <i class="fas fa-bar-chart"></i>Products</a>
                             </li>
-                            <li>
+                            <li class="@yield('categories')">
                                 <a href="{{ route('admin.category') }}">
                                 <i class="fa fa-list-ol"></i>Category</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="calendar.html">
                                 <i class="fas fa-archive"></i>Orders</a>
                             </li>
@@ -77,7 +77,7 @@
                                         <a href="forget-pass.html">Forget Password</a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
                                 <i class="fas fa-gear"></i>Setting</a>
@@ -86,7 +86,7 @@
                                         <a href="button.html">Your Profile</a>
                                     </li>
                                     <li>
-                                        <a href="badge.html">Add Something</a>
+                                        <a href="badge.html">General Setting</a>
                                     </li>
                                     <li>
                                         <a href="tab.html">Product Banner</a>
@@ -107,7 +107,7 @@
                             <div class="header-wrap">
                                 <form class="form-header" action="" method="POST">
                                     @csrf
-                                    <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                    <input class="au-input au-input--xl" type="text" name="search" placeholder="Search box..." />
                                     <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                     </button>
