@@ -80,14 +80,14 @@
                                     <td>
                                         <div class="table-data-feature">
                                             <a href="/admin/categories/{{ $category->id }}/edit" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="zmdi zmdi-edit"></i>
+                                                <i class="zmdi zmdi-edit"></i>
                                             </a>
                                             <form action="/admin/categories/{{ $category->id }}" method="POST">
-                                                @method('DELETE') 
+                                                @method('DELETE')
                                                 @csrf
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                    <i class="zmdi zmdi-delete"></i>
-                                                    </button><br>
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <i class="zmdi zmdi-delete"></i>
+                                                </button><br>
                                             </form>
                                             <button class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-more"></i>
@@ -102,16 +102,59 @@
                     </table>
                 </div>
                 <!-- END DATA TABLE -->
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="mr-2 fa fa-align-justify"></i>
+                            <strong class="card-title" v-if="headerText">Modals</strong>
+                        </div>
+                        <div class="card-body">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Static
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="copyright">
-                        <p>Copyright © 2019 This website is made by <a href="https://alpastechnology.com">Alpas Technology Pvt. Lmd.</a></p>
-                    </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <p>Copyright © 2019 This website is made by <a href="https://alpas.com.np">Alpas Technology Pvt. Lmd.</a></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</div>
+
+<!-- modal static -->
+<div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
+    data-backdrop="static">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticModalLabel">Static Modal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    This is a static modal, backdrop click will not close it.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal static -->
+</div>
+<!-- END PAGE CONTAINER-->
 @endsection

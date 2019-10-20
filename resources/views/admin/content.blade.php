@@ -534,7 +534,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="copyright">
-						<p>Copyright © {{date('Y')}} Admin by <a href="https://sagarrai.com.np">Sagar Rai</a>.</p>
+						<p>Copyright © {{date('Y')}} This website is made by <a href="https://alpas.com.np">Alpas Technology Pvt. Lmd.</a></p>
 					</div>
 				</div>
 			</div>

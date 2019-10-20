@@ -38,8 +38,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $image = $request->image;
+        $image = $request->image;   
         $new_name = rand() . '.' . $image-> getClientOriginalExtension();
         $image->move(public_path('/uploads'),$new_name);
         Product::create(array_merge(['image'=>$new_name,'image_url'=>'http://127.0.0.1:8888/laravel/ishop/public/uploads/'.$new_name,'user_id'=>auth()->user()->id],$request->except(['image'])));
@@ -58,9 +57,6 @@ class ProductController extends Controller
         //
     }
 
-    public function test(Request $request){
-        dd($request->product);
-    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -81,10 +77,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         $product=Product::where('id',$id);
-        // dd($product->first()->image);
-        $arr=[
+        $array=[
             'product_name'=>$request->product_name,
             'product_description'=>$request->product_description,
             'product_category'=>$request->product_category,
@@ -96,10 +90,9 @@ class ProductController extends Controller
             $image = $request->image;
             $new_name = rand() . '.' . $image-> getClientOriginalExtension();
             $image->move(public_path('/uploads'),$new_name);
-            $arr=array_merge($arr,['image'=>$new_name,'image_url'=>'http://127.0.0.1:8888/laravel/ishop/public/uploads/'.$new_name]);
-        // Product::where('id',$id)->update($request->except(['image','_token','_method']));
+            $array=array_merge($array,['image'=>$new_name,'image_url'=>'http://127.0.0.1:8888/laravel/ishop/public/uploads/'.$new_name]);
         }
-        $product->update($arr);
+        $product->update($array);   
         return redirect('admin/products');
     }
 
@@ -109,8 +102,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
+        $url=__DIR__.'../../../../../public/uploads/'.$product->image;
+        File::delete($url);
         $product->delete();
         return redirect('admin/products');
     }

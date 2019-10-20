@@ -38,12 +38,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $image = request('image');
+        $image = $request->image;   
         $new_name = rand() . '.' . $image-> getClientOriginalExtension();
         $image->move(public_path('/uploads'),$new_name);
         Category::create(array_merge(['image'=>$new_name,'image_url'=>'http://127.0.0.1:8888/laravel/ishop/public/uploads/'.$new_name],$request->except(['image'])));
 
-        return redirect(route('admin.category'))->with('success','Image upload successfully');
+        return redirect(route('admin.category'));
     }
 
     /**
@@ -77,7 +77,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category->update(request(['category_name','category_description','image']));
+        $category=Category::where('id',$id);
+        $array = [
+            'category_name' => $request->category_name,
+            'category_description' => $request->category_description
+        ];
+        if ($request->image != null) {
+            $url=__DIR__.'../../../../../public/uploads/'.$category->first()->image;
+            File::delete($url);
+            $image = $request->image;
+            $new_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('/uploads'),$new_name);
+            $array = array_merge($array,['image'=>$new_name,'image_url'=>'http://127.0.0.1:8888/laravel/ishop/public/uploads/'.$new_name]);
+        }
+        $category->update($array);
         return redirect('admin/categories');
     }
 
@@ -89,6 +102,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        dd($category->id);
+        $url=__DIR__.'../../../../../public/uploads/'.$category->image;
+        File::delete($url);
         $category->delete();
         return redirect('admin/categories');
     }

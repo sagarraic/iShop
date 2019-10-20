@@ -8,7 +8,7 @@
 				<div class="col-lg-6">
 					<div class="card">
 						<div class="card-header">
-							<strong>Edit </strong> a existing Product
+							<strong>Update </strong> a existing Product
 						</div>
 						<div class="card-body card-block">
 							<form action="/admin/products/{{ $product->id }}" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -71,7 +71,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="copyright">
-						<p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+						<p>Copyright © 2019. This website is made by <a href="https://alpas.com.np">Alpas Technology Pvt. Ltd.</a>.</p>
 					</div>
 				</div>
 			</div>

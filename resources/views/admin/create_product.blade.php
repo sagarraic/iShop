@@ -70,7 +70,7 @@
 			<div class="row">
                 <div class="col-md-12">
                     <div class="copyright">
-                        <p>Copyright © 2019 This website is made by <a href="https://alpastechnology.com">Alpas Technology Pvt. Lmd.</a></p>
+                        <p>Copyright © 2019 This website is made by <a href="https://alpas.com.np">Alpas Technology Pvt. Lmd.</a></p>
                     </div>
                 </div>
             </div>

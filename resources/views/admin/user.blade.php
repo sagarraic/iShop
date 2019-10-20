@@ -99,19 +99,23 @@
                                     </td>
 									<td>
 										<div class="table-data-feature">
-											<button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+											<a href="/admin/users/{{ $user->id }}/edit " class="item" data-toggle="tooltip" data-placement="top" title="Edit">
 											<i class="zmdi zmdi-edit"></i>
-											</button>
-											<button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-											<i class="zmdi zmdi-delete"></i>
-											</button>
+											</a>
+											<form action="/admin/users/{{ $user->id }}" method="POST">
+											@method('DELETE') 
+                                            @csrf	
+												<button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+												<i class="zmdi zmdi-delete"></i>
+												</button><br>
+											</form>
 											<button class="item" data-toggle="tooltip" data-placement="top" title="More">
 											<i class="zmdi zmdi-more"></i>
 											</button>
 										</div>
 									</td>
 								</tr>
-                                	@endforeach
+                                @endforeach
 							<tr class="spacer"></tr>
 							</tbody>
 						</table>
@@ -122,7 +126,7 @@
 			<div class="row">
                 <div class="col-md-12">
                     <div class="copyright">
-                        <p>Copyright © 2019 This website is made by <a href="https://alpastechnology.com">Alpas Technology Pvt. Lmd.</a></p>
+                        <p>Copyright © 2019 This website is made by <a href="https://alpas.com.np">Alpas Technology Pvt. Lmd.</a></p>
                     </div>
                 </div>
             </div>

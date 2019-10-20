@@ -63,9 +63,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.edit_user', compact('user'));
     }
 
     /**
@@ -77,7 +77,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        User::update($request->all());
+        return redirect('admin/users');
     }
 
     /**
@@ -86,8 +87,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect('admin/users');
     }
 }

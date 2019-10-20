@@ -11,8 +11,9 @@
                             Edit a existing <strong>category</strong>
                         </div>
                         <div class="card-body card-block">
-                            <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="/admin/categories/{{ $category->id }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 @csrf
+                                @method('patch')
                                 <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label for="text-input" class="form-control-label">Category Name</label>
@@ -54,7 +55,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="copyright">
-                        <p>Copyright © 2019 This website is made by <a href="https://alpastechnology.com">Alpas Technology Pvt. Lmd.</a></p>
+                        <p>Copyright © 2019 This website is made by <a href="https://alpas.com.np">Alpas Technology Pvt. Lmd.</a></p>
                     </div>
                 </div>
             </div>

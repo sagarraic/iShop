@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('product_category');
             $table->string('user_id');
             $table->unsignedInteger('price');
-            $table->string('image')->default('');
-            $table->string('image_url')->default('');
+            $table->string('image')->default('')->nullable();
+            $table->string('image_url')->default('')->nullable();
             $table->timestamps();
         });
     }

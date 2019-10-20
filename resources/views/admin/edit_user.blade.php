@@ -8,17 +8,18 @@
 				<div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
-                            Register a <strong>new</strong> User
+                            <strong>Update</strong> a existing User
                         </div>
                         <div class="card-body card-block">
-                            <form action="{{ route('admin.users.store') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="/admin/users/{{ $user->id }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 @csrf
+                                @method('patch')
                                 <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label for="text-input" class=" form-control-label">First Name</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" name="fname" placeholder="First Name" class="form-control">
+                                        <input type="text" name="fname" value="{{ $user->fname }}" placeholder="First Name" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -26,7 +27,7 @@
                                         <label for="text-input" class=" form-control-label">Last Name</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" name="lname" placeholder="Last Name" class="form-control">
+                                        <input type="text" name="lname" value="{{ $user->lname }}" placeholder="Last Name" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -34,7 +35,7 @@
                                         <label for="email-input" class=" form-control-label">Email</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="email" id="email-input" name="email" placeholder="Enter Email" class="form-control">
+                                        <input type="email" id="email-input" value="{{ $user->email }}" name="email" placeholder="Enter Email" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -42,7 +43,7 @@
                                         <label for="text-input" class=" form-control-label">Role ID</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" name="role_id" placeholder="Role ID" class="form-control">
+                                        <input type="text" name="role_id" value="{{ $user->role_id }}" placeholder="Role ID" class="form-control">
                                     </div>
                                 </div>	
                                 <div class="row form-group">
@@ -50,7 +51,7 @@
                                         <label for="password-input" class=" form-control-label">Password</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="password" id="password-input" name="password" placeholder="Password" class="form-control">
+                                        <input type="password" id="password-input" value="{{ $user->password }}" name="password" placeholder="Password" class="form-control">
                                     </div>
                                 </div>
                                 <div class="card-footer">
