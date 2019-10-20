@@ -109,7 +109,7 @@
                             <div class="header-wrap">
                                 <form class="form-header" action="" method="POST">
                                     @csrf
-                                    <input class="au-input au-input--xl" type="text" name="search" placeholder="Search box..." />
+                                    <input class="au-input au-input--xl" id="search" type="text" name="search" placeholder="Search box..." />
                                     <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                     </button>

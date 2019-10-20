@@ -41,7 +41,7 @@
 									<i class="zmdi zmdi-shopping-cart"></i>
 								</div>
 								<div class="text">
-									<h2>388</h2>
+									<h2>3</h2>
 									<span>items solid</span>
 								</div>
 							</div>

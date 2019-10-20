@@ -57,7 +57,7 @@
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6">
                                             <div class="c_product_img">
-                                                <img class="img-fluid" src="{{ $product->image_url }}" alt="">
+                                                <img style="height: 315px; width: 315px;" class="img-fluid" src="{{ $product->image_url }}" alt="">
                                             </div>
                                         </div>
                                         <div class="col-lg-8 col-md-6">
@@ -87,7 +87,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div><br>
                                     @endforeach
                                 </div>
                                 

@@ -166,7 +166,7 @@
                     <div class="item">
                         <div class="l_product_item">
                             <div class="l_p_img">
-                                <img src="{{ $product->image_url }}" alt="">
+                                <img style="height: 315px; width: 315px;" src="{{ $product->image_url }}" alt="">
                             </div>
                             <div class="l_p_text">
                                 <ul>

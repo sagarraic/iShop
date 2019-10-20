@@ -14640,3 +14640,7 @@ section {
 .vue-lists ul, .vue-lists ol {
     padding-left: 30px;
 }
+
+#search {
+    margin-left: 10px;
+}

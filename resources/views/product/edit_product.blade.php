@@ -4,10 +4,10 @@
         <section class="solid_banner_area">
             <div class="container">
                 <div class="solid_banner_inner">
-                    <h3>Edit Product</h3>
+                    <h3>Edit a existing product</h3>
                     <ul>
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">Add Product</a></li>
+                        <li><a href="#">Edit Product</a></li>
                     </ul>
                 </div>
             </div>
@@ -18,7 +18,7 @@
         <section class="contact_area p_100">
             <div class="container">
                 <div class="contact_form_inner">
-                    <h3>Add a New Product</h3>
+                    <h3>Edit a existing Product</h3>
                     <form class="contact_us_form row" action="/products/{{ $product->id }}" method="POST" novalidate="novalidate" enctype="multipart/form-data">
 	                    @method('PATCH')
 						@csrf
@@ -36,19 +36,10 @@
                         </div>
                         
                         <div class="form-group col-lg-7">
-                            <button type="submit" class="btn update_btn form-control">Update Product</button>
+                            <button type="submit" class="btn update_btn form-control">Update</button>
                         </div>
                     </form>
 
-                    <form action="/products/{{ $product->id }}" method="POST">
-						@method('DELETE') 
-						@csrf
-						<div class="form-group col-lg-7">
-							<div class="control">
-								<button name="submit" class="btn btn-danger">Delete Project</button>
-							</div>
-						</div>
-					</form>
                 </div>
             </div>
         </section>
