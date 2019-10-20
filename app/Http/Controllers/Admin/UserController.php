@@ -77,7 +77,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        User::update($request->all());
+        $user=User::where('id',$id);
+        $user->update(request(['fname','lname','email','role_id']));
         return redirect('admin/users');
     }
 

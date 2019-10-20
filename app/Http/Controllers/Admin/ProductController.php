@@ -38,10 +38,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // $this->validateProduct();
         $image = $request->image;   
         $new_name = rand() . '.' . $image-> getClientOriginalExtension();
         $image->move(public_path('/uploads'),$new_name);
-        Product::create(array_merge(['image'=>$new_name,'image_url'=>'http://127.0.0.1:8888/laravel/ishop/public/uploads/'.$new_name,'user_id'=>auth()->user()->id],$request->except(['image'])));
+        Product::create(array_merge(['image'=>$new_name,'image_url'=>'http://127.0.0.1:8888/laravel/ishop/public/uploads/'.$new_name,'user_id'=>auth()->user()->id],$request->validated()->except(['image'])));
         
         return redirect(route('admin.product'));
     }

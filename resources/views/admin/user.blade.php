@@ -102,13 +102,9 @@
 											<a href="/admin/users/{{ $user->id }}/edit " class="item" data-toggle="tooltip" data-placement="top" title="Edit">
 											<i class="zmdi zmdi-edit"></i>
 											</a>
-											<form action="/admin/users/{{ $user->id }}" method="POST">
-											@method('DELETE') 
-                                            @csrf	
-												<button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-												<i class="zmdi zmdi-delete"></i>
-												</button><br>
-											</form>
+											<button type="button" class="item btn-del" data-toggle="modal" data-placement="top" data-id="{{ $user->id }}" title="Delete" data-target="#staticModal">
+											<i class="zmdi zmdi-delete"></i>
+											</button><br>
 											<button class="item" data-toggle="tooltip" data-placement="top" title="More">
 											<i class="zmdi zmdi-more"></i>
 											</button>
@@ -133,4 +129,41 @@
 		</div>
 	</div>
 </div>
+<!-- modal static -->
+<div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
+data-backdrop="static">
+<div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticModalLabel">Warning Message !!!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>
+                Are you sure? You want to delete the user?
+            </p>
+        </div>
+        <div class="modal-footer">
+            <form class="frm-del" action="#" method="POST">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="btn btn-danger">Yes</button>
+            </form>
+            <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+        </div>
+    </div>
+</div>
+</div>
+<!-- end modal static -->
+</div>
+<script>
+    $(".btn-del").on('click',function(e){
+        e.preventDefault();
+        var id=$(this).attr('data-id');
+        $(".frm-del").attr('action','/admin/users/'+id)
+    });
+</script>
+<!-- END PAGE CONTAINER-->
 @endsection

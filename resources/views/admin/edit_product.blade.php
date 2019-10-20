@@ -8,7 +8,7 @@
 				<div class="col-lg-6">
 					<div class="card">
 						<div class="card-header">
-							<strong>Update </strong> a existing Product
+							<strong>Update</strong> a existing Product
 						</div>
 						<div class="card-body card-block">
 							<form action="/admin/products/{{ $product->id }}" method="post" enctype="multipart/form-data" class="form-horizontal">

@@ -26,6 +26,8 @@
         <link href="/admin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
         <!-- Main CSS-->
         <link href="/admin/css/theme.css" rel="stylesheet" media="all">
+        
+        <script src="/admin/vendor/jquery-3.2.1.min.js"></script>
     </head>
     <body class="animsition">
         <div class="page-wrapper">
@@ -280,7 +282,6 @@
             </div>
         </div>
         <!-- Jquery JS-->
-        <script src="/admin/vendor/jquery-3.2.1.min.js"></script>
         <!-- Bootstrap JS-->
         <script src="/admin/vendor/bootstrap-4.1/popper.min.js"></script>
         <script src="/admin/vendor/bootstrap-4.1/bootstrap.min.js"></script>

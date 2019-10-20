@@ -102,7 +102,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        dd($category->id);
         $url=__DIR__.'../../../../../public/uploads/'.$category->image;
         File::delete($url);
         $category->delete();

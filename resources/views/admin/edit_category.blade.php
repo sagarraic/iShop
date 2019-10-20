@@ -8,7 +8,7 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
-                            Edit a existing <strong>category</strong>
+                            <strong>Update</strong> a existing Category
                         </div>
                         <div class="card-body card-block">
                             <form action="/admin/categories/{{ $category->id }}" method="post" enctype="multipart/form-data" class="form-horizontal">
