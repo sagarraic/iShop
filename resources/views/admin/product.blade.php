@@ -84,39 +84,39 @@
                                         <td>admin</td>
                                         <td>
                                             <div class="table-data-feature">
-                                                
-                                                <a href="/admin/products/{{ $product->id }}/edit" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <a href="/admin/products/{{ $product->id }}" class="item" data-toggle="modal" data-placement="top" id="btnView" data-target="#staticModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="/admin/products/{{ $product->id }}/edit" class="item" data-toggle="modal" data-placement="top" id="btnEdit" data-target="#staticModal">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </a>
                                                 
-                                                    <button type="button" class="item btn-delete" data-toggle="modal" data-id="{{ $product->id }}" data-placement="top" title="Delete" data-target="#staticModal">
-                                                    <i class="zmdi zmdi-delete"></i>
-                                                    </button></br>
-                                                </form>
-                                                <a class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                    <i class="zmdi zmdi-more"></i>
-                                                </a>
-                                                
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                <tr class="spacer"></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- END DATA TABLE -->
+                                                <button type="button" class="item btn-delete" data-toggle="modal" data-id="{{ $product->id }}" data-placement="top" id="btnDelete" data-target="#staticModal">
+                                                <i class="zmdi zmdi-delete"></i>
+                                                </button></br>
+                                            </form>
+                                            
+                                            
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            <tr class="spacer"></tr>
+                        </tbody>
+                    </table>
                 </div>
+                <!-- END DATA TABLE -->
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="copyright">
-                        <p>Copyright © 2019 This website is made by <a href="https://alpas.com.np">Alpas Tech Pvt. Lmd.</a>.</p>
-                    </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <p>Copyright © 2019 This website is made by <a href="https://alpas.com.np">Alpas Tech Pvt. Lmd.</a>.</p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 <!-- modal static -->
 <div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
@@ -147,12 +147,30 @@ data-backdrop="static">
 </div>
 <!-- end modal static -->
 </div>
+<div id="infoProduct" class="invisible">
+    <div class="modalHeader">
+        <h5 class="modal-title" id="staticModalLabel">Warning Message !!!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+</div>
 <script>
-    $(".btn-delete").on('click',function(e){
-        e.preventDefault();
-        var id=$(this).attr('data-id');
-        $(".frm-delete").attr('action','/admin/products/'+id)
-    });
+$(".btn-delete").on('click',function(e){
+    e.preventDefault();
+    var id=$(this).attr('data-id');
+    $(".frm-delete").attr('action','/admin/products/'+id)
+});
+// $(function(e){
+//     e.preventDefault();
+//     var $header = $("#staticModal .modal-header"),
+//         $body = $("#staticModal .modal-body"),
+//         $footer = $("#staticModal .modal-footer"),
+    
+//     var headerContent = $("#infoProduct .modalHeader").html();
+//     $header.html(headerContent);
+
+//     });
 </script>
 <!-- END PAGE CONTAINER-->
 @endsection

@@ -13,45 +13,45 @@
                         <div class="card-body card-block">
                             <form action="{{ route('admin.users.store') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 @csrf
-                                <div class="row form-group @error('fname') has-error @enderror">
+                                <div class="row form-group ">
                                     <div class="col col-md-3">
                                         <label for="text-input" class=" form-control-label">First Name</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" name="fname" placeholder="First Name" class="form-control" value="{{ old('fname') }}">
-                                        @error('product_name')
+                                        <input type="text" name="fname" placeholder="First Name" class="form-control @error('fname') is-invalid @enderror" value="{{ old('fname') }}">
+                                        @error('fname')
                                             <small class="form-text text-muted">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="row form-group @error('lname') has-error @enderror">
+                                <div class="row form-group ">
                                     <div class="col col-md-3">
                                         <label for="text-input" class=" form-control-label">Last Name</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" name="lname" placeholder="Last Name" class="form-control" value="{{ old('lname') }}">
+                                        <input type="text" name="lname" placeholder="Last Name" class="form-control @error('lname') is-invalid @enderror" value="{{ old('lname') }}">
                                         @error('lname')
                                             <small class="form-text text-muted">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="row form-group @error('email') has-error @enderror">
+                                <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label for="email-input" class=" form-control-label">Email</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="email" id="email-input" name="email" placeholder="Enter Email" class="form-control" value="{{ old('email') }}">
+                                        <input type="email" id="email-input" name="email" placeholder="Enter Email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
                                         @error('email')
                                             <small class="form-text text-muted">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="row form-group @error('role_id') has-error @enderror">
+                                <div class="row form-group ">
                                     <div class="col col-md-3">
                                         <label for="text-input" class=" form-control-label">Role ID</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" name="role_id" placeholder="Role ID" class="form-control" value="{{ old('role_id') }}">
+                                        <input type="text" name="role_id" placeholder="Role ID" class="form-control @error('role_id') is-invalid @enderror" value="{{ old('role_id') }}">
                                         @error('role_id')
                                             <small class="form-text text-muted">{{ $message }}</small>
                                         @enderror
@@ -62,7 +62,7 @@
                                         <label for="password-input" class=" form-control-label">Password</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="password" id="password-input" name="password" placeholder="Password" class="form-control" value="{{ old('password') }}">
+                                        <input type="password" id="password-input" name="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}">
                                         @error('password')
                                             <small class="form-text text-muted">{{ $message }}</small>
                                         @enderror

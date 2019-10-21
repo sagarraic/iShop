@@ -13,23 +13,23 @@
                         <div class="card-body card-block">
                             <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 @csrf
-                                <div class="row form-group @error('category_name') has-error @enderror">
+                                <div class="row form-group ">
                                     <div class="col col-md-3">
                                         <label for="text-input" class="form-control-label">Category Name</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" name="category_name" placeholder="Enter category name" class="form-control" value="{{ old('category_name') }}">
+                                        <input type="text" name="category_name" placeholder="Enter category name" class="form-control @error('category_name') is-invalid @enderror" value="{{ old('category_name') }}">
                                         @error('category_name')
                                             <small class="form-text text-muted">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="row form-group @error('category_description') has-error @enderror">
+                                <div class="row form-group ">
                                     <div class="col col-md-3">
                                         <label for="textarea-input" class="form-control-label">Description</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <textarea name="category_description" id="textarea-input" rows="9" placeholder="Description..." class="form-control">{{ old('category_description') }}</textarea>
+                                        <textarea name="category_description" id="textarea-input" rows="9" placeholder="Description..." class="form-control @error('category_description') is-invalid @enderror">{{ old('category_description') }}</textarea>
                                         @error('category_description')
                                             <small class="form-text text-muted">{{ $message }}</small>
                                         @enderror

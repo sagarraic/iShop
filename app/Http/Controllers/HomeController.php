@@ -38,11 +38,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if(auth()->user()->role_id == 1){
+            return redirect('admin/dashboard'); }
+        else {
+            return redirect(route('homepage'));
+        }
+        // return view('home');
     }
 
     public function logOut()
     {
         Auth::logout();
+        return redirect('/');
     }
 }

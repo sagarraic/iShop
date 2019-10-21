@@ -79,6 +79,9 @@
                                     <td><img style="height: 50px;" src="{{ $category->image_url }}" alt=""></td>
                                     <td>
                                         <div class="table-data-feature">
+                                            <a href="/admin/categories/{{ $category->id }}" class="item" data-toggle="tooltip" data-placement="top" title="View">
+                                            <i class="zmdi zmdi-eye"></i>
+                                            </a>
                                             <a href="/admin/categories/{{ $category->id }}/edit" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="zmdi zmdi-edit"></i>
                                             </a>
@@ -86,9 +89,7 @@
                                             <i class="zmdi zmdi-delete"></i>
                                             </button>
                                             <br>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                            <i class="zmdi zmdi-more"></i>
-                                            </button>
+                                            
                                         </div>
                                     </td>
                                 </tr>

@@ -38,6 +38,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'fname'=>'required',
+            'lname'=>'required',
+            'email'=>'required',
+            'role_id'=>'required',
+            'password'=>'required',
+        ]);
+
         $request->except('password');
         $array=[
             'password'=>Hash::make(request('password')),
@@ -54,7 +62,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.show_user',compact('user'));
     }
 
     /**

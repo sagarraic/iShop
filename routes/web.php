@@ -9,15 +9,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'Auth\LoginController@showLoginForm');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-// Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/home', 'HomeController@index')->name('index');
-Auth::routes();
 Route::get('/logout','HomeController@logOut');
+Auth::routes();
 
 Route::get('verify/{email}/{verifyToken}','Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
 

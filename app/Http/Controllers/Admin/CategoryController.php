@@ -38,6 +38,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'category_name'=>'required',
+            'category_description'=>'required',
+        ]);
         $image = $request->image;   
         $new_name = rand() . '.' . $image-> getClientOriginalExtension();
         $image->move(public_path('/uploads'),$new_name);
@@ -54,7 +58,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin.show_category',compact('category'));
     }
 
     /**

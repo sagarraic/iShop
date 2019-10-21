@@ -99,15 +99,16 @@
                                     </td>
 									<td>
 										<div class="table-data-feature">
+											<a href="/admin/users/{{ $user->id }}" class="item" data-toggle="tooltip" data-placement="top" title="View">
+											<i class="zmdi zmdi-eye"></i>
+											</a>
 											<a href="/admin/users/{{ $user->id }}/edit " class="item" data-toggle="tooltip" data-placement="top" title="Edit">
 											<i class="zmdi zmdi-edit"></i>
 											</a>
 											<button type="button" class="item btn-del" data-toggle="modal" data-placement="top" data-id="{{ $user->id }}" title="Delete" data-target="#staticModal">
 											<i class="zmdi zmdi-delete"></i>
 											</button><br>
-											<button class="item" data-toggle="tooltip" data-placement="top" title="More">
-											<i class="zmdi zmdi-more"></i>
-											</button>
+											
 										</div>
 									</td>
 								</tr>
