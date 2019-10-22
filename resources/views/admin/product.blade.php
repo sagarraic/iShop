@@ -84,93 +84,107 @@
                                         <td>admin</td>
                                         <td>
                                             <div class="table-data-feature">
-                                                <a href="/admin/products/{{ $product->id }}" class="item" data-toggle="modal" data-placement="top" id="btnView" data-target="#staticModal">
-                                                    <i class="zmdi zmdi-eye"></i>
-                                                </a>
-                                                <a href="/admin/products/{{ $product->id }}/edit" class="item" data-toggle="modal" data-placement="top" id="btnEdit" data-target="#staticModal">
-                                                    <i class="zmdi zmdi-edit"></i>
-                                                </a>
-                                                
+                                                <button class="item btn-action" data-toggle="modal" data-placement="top" id="btnView" data-target="#infoView" data-id="{{ $product->id }}" data-action="view">
+                                                <i class="zmdi zmdi-eye"></i>
+                                                </button>
+                                                <button class="item btn-action" data-toggle="modal" data-placement="top" id="btnEdit" data-target="#infoView" data-id="{{ $product->id }}" data-action="edit">
+                                                <i class="zmdi zmdi-edit"></i>
+                                                </button>
                                                 <button type="button" class="item btn-delete" data-toggle="modal" data-id="{{ $product->id }}" data-placement="top" id="btnDelete" data-target="#staticModal">
                                                 <i class="zmdi zmdi-delete"></i>
                                                 </button></br>
-                                            </form>
-                                            
-                                            
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            <tr class="spacer"></tr>
-                        </tbody>
-                    </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                <tr class="spacer"></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END DATA TABLE -->
                 </div>
-                <!-- END DATA TABLE -->
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="copyright">
-                    <p>Copyright © 2019 This website is made by <a href="https://alpas.com.np">Alpas Tech Pvt. Lmd.</a>.</p>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p>Copyright © 2019 This website is made by <a href="https://alpas.com.np">Alpas Tech Pvt. Lmd.</a>.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 <!-- modal static -->
 <div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
 data-backdrop="static">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticModalLabel">Warning Message !!!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Are you sure? You want to delete the Product?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <form class="frm-delete" action="#" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                </form>
+                <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal static -->
+<div class="modal fade" id="infoView" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
+data-backdrop="static">
 <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="staticModalLabel">Warning Message !!!</h5>
+            <h5 class="modal-title" id="dynamicModalHeader">Modal Header Here</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-body">
-            <p>
-                Are you sure? You want to delete the Product?
+        <div class="modal-body" id="modalbody1">
+            <p id="dynamicModalBody">
+                Modal Body Here!
             </p>
         </div>
         <div class="modal-footer">
-            <form class="frm-delete" action="#" method="POST">
-                @method('DELETE')
-                @csrf
-                <button type="submit" class="btn btn-danger">Yes</button>
-            </form>
-            <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
-        </div>
+            <a id="modal-frm" href="#">
+                <button class="btn btn-danger">Yes</button>
+            </a>
+                <button class="btn btn-success" data-dismiss="modal">No</button>
+        </div>  
     </div>
-</div>
-</div>
-<!-- end modal static -->
-</div>
-<div id="infoProduct" class="invisible">
-    <div class="modalHeader">
-        <h5 class="modal-title" id="staticModalLabel">Warning Message !!!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-    </div>
-</div>
-<script>
-$(".btn-delete").on('click',function(e){
-    e.preventDefault();
-    var id=$(this).attr('data-id');
-    $(".frm-delete").attr('action','/admin/products/'+id)
-});
-// $(function(e){
-//     e.preventDefault();
-//     var $header = $("#staticModal .modal-header"),
-//         $body = $("#staticModal .modal-body"),
-//         $footer = $("#staticModal .modal-footer"),
-    
-//     var headerContent = $("#infoProduct .modalHeader").html();
-//     $header.html(headerContent);
 
-//     });
+<script>
+    $('.btn-action').on('click',function(){
+    var action= $(this).attr('data-action');
+    var id=$(this).attr('data-id');
+    if(action == 'view'){
+        $("#modal-frm").attr('href','/admin/products/'+id)
+        $("#dynamicModalHeader").html('Message view');
+        $("#dynamicModalBody").html('Do you want view the product?');
+    } 
+    else {
+        $("#modal-frm").attr('href','/admin/products/'+id+'/edit')
+        $("#dynamicModalHeader").html('Message Edit');
+        $("#dynamicModalBody").html('Do you want Edit the product?');
+    }
+});
+    $(".btn-delete").on('click',function(e){
+        e.preventDefault();
+        var id=$(this).attr('data-id');
+        $(".frm-delete").attr('action','/admin/products/'+id)
+    });
 </script>
 <!-- END PAGE CONTAINER-->
 @endsection

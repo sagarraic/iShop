@@ -79,17 +79,16 @@
                                     <td><img style="height: 50px;" src="{{ $category->image_url }}" alt=""></td>
                                     <td>
                                         <div class="table-data-feature">
-                                            <a href="/admin/categories/{{ $category->id }}" class="item" data-toggle="tooltip" data-placement="top" title="View">
+                                            <button class="item btn-action" id="btnView" data-action="view" data-id="{{ $category->id }}" data-toggle="modal" data-placement="top" data-target="#infoView">
                                             <i class="zmdi zmdi-eye"></i>
-                                            </a>
-                                            <a href="/admin/categories/{{ $category->id }}/edit" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            </button>
+                                            <button class="item btn-action" data-action="edit" id="btnEdit" data-id="{{ $category->id }}" data-toggle="modal" data-placement="top" data-target="#infoView">
                                             <i class="zmdi zmdi-edit"></i>
-                                            </a>
-                                            <button type="button" class="item btn-del" data-toggle="modal"data-id="{{ $category->id }}" data-placement="top" title="Delete" data-target="#staticModal">
+                                            </button>
+                                            <button type="button" class="item btn-del" data-toggle="modal" data-id="{{ $category->id }}" data-placement="top" id="btnDel" data-target="#staticModal">
                                             <i class="zmdi zmdi-delete"></i>
                                             </button>
                                             <br>
-                                            
                                         </div>
                                     </td>
                                 </tr>
@@ -114,37 +113,73 @@
 <!-- modal static -->
 <div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
 data-backdrop="static">
-<div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="staticModalLabel">Warning Message !!!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <p>
-                Are you sure? You want to delete the user?
-            </p>
-        </div>
-        <div class="modal-footer">
-            <form class="frm-del" action="#" method="POST">
-                @method('DELETE')
-                @csrf
-                <button type="submit" class="btn btn-danger">Yes</button>
-            </form>
-            <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticModalLabel">Warning Message !!!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Are you sure? You want to delete the Product?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <form class="frm-delete" action="#" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                </form>
+                <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+            </div>
         </div>
     </div>
 </div>
-</div>
 <!-- end modal static -->
-</div>
+<div class="modal fade" id="infoView" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
+data-backdrop="static">
+<div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="dynamicModalHeader">Modal Header Here</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" id="modalbody1">
+            <p id="dynamicModalBody">
+                Modal Body Here!
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a id="modal-frm" href="#">
+                <button class="btn btn-danger">Yes</button>
+            </a>
+                <button class="btn btn-success" data-dismiss="modal">No</button>
+        </div>  
+    </div>
+
 <script>
-    $(".btn-del").on('click',function(e){
+    $('.btn-action').on('click',function(){
+    var action= $(this).attr('data-action');
+    var id=$(this).attr('data-id');
+    if(action == 'view'){
+        $("#modal-frm").attr('href','/admin/categories/'+id)
+        $("#dynamicModalHeader").html('Message view');
+        $("#dynamicModalBody").html('Do you want view the category?');
+    } 
+    else {
+        $("#modal-frm").attr('href','/admin/categories/'+id+'/edit')
+        $("#dynamicModalHeader").html('Message Edit');
+        $("#dynamicModalBody").html('Do you want Edit the category?');
+    }
+});
+    $(".btn-delete").on('click',function(e){
         e.preventDefault();
         var id=$(this).attr('data-id');
-        $(".frm-del").attr('action','/admin/categories/'+id)
+        $(".frm-delete").attr('action','/admin/categories/'+id)
     });
 </script>
 <!-- END PAGE CONTAINER-->
