@@ -107,4 +107,16 @@ class OrderController extends Controller
         $order->delete();
         return redirect('/orders');
     }
+
+    public function checkout_register(){
+        $status = Order::where('status',0)->where('user_id',Auth::user()->id);
+        $status->update([
+            'status'=> 1,
+        ]);
+        return view('order.checkout_register');
+    }
+
+    public function bill_details(){
+        return view('order.bill_details');
+    }
 }

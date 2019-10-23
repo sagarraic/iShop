@@ -6,8 +6,8 @@
 		<div class="solid_banner_inner">
 			<h3>shopping cart</h3>
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="shopping-cart.html">Shopping cart</a></li>
+				<li><a href="{{ route('homepage') }}">Home</a></li>
+				<li><a href="{{ route('orders.index') }}">Shopping cart</a></li>
 			</ul>
 		</div>
 	</div>
@@ -54,9 +54,9 @@
 
 										</div>
 									</td>
-									<td><p>Rs. 100</p></td>
+									<td><p>{{ $order->product->price }}</p></td>
 									<td><input type="text" placeholder="01"></td>
-									<td><p>Rs. 100</p></td>
+									<td><p>{{ $order->product->price }}</p></td>
 								</tr>
 								@endforeach
 							</tbody>
@@ -69,8 +69,8 @@
 						<form class="calculate_shoping_form row" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
 							<div class="form-group col-lg-12">
 								<select class="selectpicker">
-									<option>United State America (USA)</option>
-									<option>United State America (USA)</option>
+									<option>Nepal </option>
+									<option>United Kingdom (UK) </option>
 									<option>United State America (USA)</option>
 								</select>
 							</div>
@@ -106,7 +106,7 @@
 							</ul>
 						</div>
 						<button type="submit" class="btn btn-primary update_btn">update cart</button>
-						<button type="submit" class="btn btn-primary checkout_btn">proceed to checkout</button>
+						<a href="{{ route('checkout_register') }}" class="btn btn-primary checkout_btn">proceed to checkout</a>
 					</div>
 				</div>
 			</div>
