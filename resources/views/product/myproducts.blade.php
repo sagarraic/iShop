@@ -82,7 +82,7 @@
                                                 @method('DELETE') 
                                                 @csrf
                                                 <ul class="c_product_btn">
-                                                    <li><button name="submit" class="add_cart_btn">Delete Project</button></li>
+                                                    <li><button type="submit" class="add_cart_btn">Delete Project</button></li>
                                                 </ul>
                                                 </form>
                                             </div>

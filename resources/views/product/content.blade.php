@@ -171,7 +171,13 @@
                             <div class="l_p_text">
                                 <ul>
                                     <li class="p_icon"><a href="/products/{{ $product->id }}"><i class="icon_search"></i></a></li>
-                                    <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                                    <li>
+                                        <form action="/orders" method="POST">
+                                        @csrf
+                                        <button type="submit" class="add_cart_btn">Add To Cart</button>
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    </form>
+                                    </li>
                                     <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                                 </ul>
                                 <h4>{{ $product->product_name }}</h4>

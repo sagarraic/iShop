@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Product;
-use App\User;
-use App\Category;
-use Illuminate\Http\Request;
+namespace App\Http\Controllers\User;
 
-class AdminController extends Controller
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Order;
+use Auth;
+use App\Product;
+
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +17,16 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $counts = [
-            'productCount' => Product::all()->count(),
-            'userCount' => User::all()->where('role_id','2')->count(),
-            'categoryCount' => Category::all()->count()
-        ];
-        return view('admin.content',compact('counts'));
+        $orders = Order::all();
+        // foreach ($orders as $order) {
+        //     dump($order->id);
+        //     dump($order->user->email);
+        //     dump($order->product->product_name);
+
+        //     dump($order->product->image);
+        //     # code...
+        // }
+        return view('order.content',compact('orders'));  
     }
 
     /**
@@ -41,7 +47,19 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $alreadySelected = Order::where('user_id',Auth::user()->id)->where('product_id',$request->product_id)->where('status',0)->count();
+
+        if($alreadySelected == 0){
+        $array = [
+            'user_id' => Auth::user()->id,
+            'product_id' => $request->product_id,
+            'status' => 0, 
+        ]; 
+
+        Order::create($array);
+        }
+        
+        return redirect('/orders' );
     }
 
     /**
@@ -84,8 +102,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect('/orders');
     }
 }

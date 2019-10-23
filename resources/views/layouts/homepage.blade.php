@@ -117,6 +117,7 @@
                                     <li class="nav-item"><a class="nav-link" href="{{ route('products.myproducts') }}"> My Product </a></li>
                                     {{-- <li class="nav-item"><a class="nav-link" href="/products/{{ $products->id }}">My Products </a></li> --}}
                                     <li class="nav-item"><a class="nav-link" href="{{ route('products.create') }}">Add Product</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('orders.index') }}">My Orders</a></li>
                                     {{-- @endforeach --}}
                                     
                                 </ul>

@@ -23,8 +23,8 @@
 									<i class="zmdi zmdi-account-o"></i>
 								</div>
 								<div class="text">
-									<h2>103</h2>
-									<span>members online</span>
+									<h2>{{ $counts['userCount'] }}</h2>
+									<span>Total Users</span>
 								</div>
 							</div>
 							<div class="overview-chart">
@@ -38,11 +38,11 @@
 						<div class="overview__inner">
 							<div class="overview-box clearfix">
 								<div class="icon">
-									<i class="zmdi zmdi-shopping-cart"></i>
+									<i class="zmdi zmdi-shopping-basket"></i>
 								</div>
 								<div class="text">
-									<h2>3</h2>
-									<span>items solid</span>
+									<h2>{{ $counts['productCount'] }}</h2>
+									<span>Total Products</span>
 								</div>
 							</div>
 							<div class="overview-chart">
@@ -59,7 +59,7 @@
 									<i class="zmdi zmdi-calendar-note"></i>
 								</div>
 								<div class="text">
-									<h2>108</h2>
+									<h2>45</h2>
 									<span>this week</span>
 								</div>
 							</div>

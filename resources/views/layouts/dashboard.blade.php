@@ -55,7 +55,11 @@
                             </li>
                             <li class="@yield('categories')">
                                 <a href="{{ route('admin.category') }}">
-                                <i class="fa fa-list-ol"></i>Category</a>
+                                <i class="fa fa-list-ol"></i>Categories</a>
+                            </li>
+                            <li class="@yield('orders')">
+                                <a href="{{ route('admin.order') }}">
+                                <i class="fa fa-shopping-cart"></i>Orders</a>
                             </li>
                             {{-- <li>
                                 <a href="calendar.html">
