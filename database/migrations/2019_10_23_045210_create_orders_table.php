@@ -18,7 +18,10 @@ class CreateOrdersTable extends Migration
             $table->string('user_id');
             $table->string('product_id');
             $table->integer('quantity')->nullable();
-            $table->bigInteger('total')->nullable();;
+            $table->bigInteger('total')->nullable();
+            $table->bigInteger('country')->nullable();
+            $table->bigInteger('state')->nullable();
+            $table->bigInteger('zip')->nullable();
             $table->date('ship_date')->nullable();;
             $table->tinyInteger('status');
             $table->timestamps();

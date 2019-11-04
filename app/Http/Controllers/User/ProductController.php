@@ -44,14 +44,41 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // public function store(Request $request)
+    // {
+    //     $image = request('image');
+    //     $new_name = rand() . '.' . $image-> getClientOriginalExtension();
+    //     $image->move(public_path('/uploads'),$new_name);
+        
+    //     Product::create(array_merge(['image'=>$new_name,'image_url'=>'http://127.0.0.1:8888/laravel/ishop/public/uploads/'.$new_name,'user_id'=>1],$request->except(['image'])));
+
+    //     return redirect(route('homepage'))->with('success','Image upload successfully');
+    // }
+
     public function store(Request $request)
     {
         $image = request('image');
         $new_name = rand() . '.' . $image-> getClientOriginalExtension();
         $image->move(public_path('/uploads'),$new_name);
+        
         Product::create(array_merge(['image'=>$new_name,'image_url'=>'http://127.0.0.1:8888/laravel/ishop/public/uploads/'.$new_name,'user_id'=>1],$request->except(['image'])));
 
         return redirect(route('homepage'))->with('success','Image upload successfully');
+    }
+
+    public function storeapi(Request $request)
+    {
+        $image = request('image');
+        $new_name = rand() . '.' . $image-> getClientOriginalExtension();
+        $image->move(public_path('/uploads'),$new_name);
+        
+        $saved = Product::create(array_merge(['image'=>$new_name,'image_url'=>'http://127.0.0.1:8888/laravel/ishop/public/uploads/'.$new_name,'user_id'=>1],$request->except(['image'])));
+
+        if (!$saved) {
+            return response()->json(['result' => 'failure']);
+        }
+
+        return response()->json(['result' => 'success']);
     }
 
     /**
@@ -70,7 +97,18 @@ class ProductController extends Controller
     {
         $user_id = auth()->user()->id;
         $product = Product::where('user_id',$user_id)->get();
+        dd($product->toArray());
         return view('product.myproducts',compact('product'));
+    }
+
+    public function myproductsApi(Product $product)
+    {
+        $user_id = auth()->user()->id;
+        $product = Product::where('user_id',$user_id)->get();
+
+        return $product;
+        // dd($product->toArray());
+        // return view('product.myproducts',compact('product'));
     }
 
     /**

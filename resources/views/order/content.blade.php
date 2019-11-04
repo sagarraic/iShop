@@ -1,5 +1,6 @@
 @extends('layouts.homepage')
 @section('content')
+@if(!$orders->isEmpty())
 <!--================Categories Banner Area =================-->
 <section class="solid_banner_area">
 	<div class="container">
@@ -33,14 +34,16 @@
 								</tr>
 							</thead>
 							<tbody>
+							<form id="billForm" action="users/order/bill_details" method="POST">
+							@csrf
 								@foreach ($orders as $order)
 								<tr>
 									<th scope="row">
 
-										<form action="/orders/{{ $order->id }}" method="POST">
+										<form class="del-form" action="/orders/{{ $order->id }}" method="POST">
 										@method('DELETE')
 										@csrf
-										<button type="submit"><img src="user/images/icon/close-icon.png" alt=""></button>
+										<button id="del"><img src="user/images/icon/close-icon.png" alt=""></button>
 										</form>
 									</th>
 									<td>
@@ -54,21 +57,26 @@
 
 										</div>
 									</td>
-									<td><p>{{ $order->product->price }}</p></td>
-									<td><input type="text" placeholder="01"></td>
-									<td><p>{{ $order->product->price }}</p></td>
+									<td><input type="number" name="product_price" id="product_price" value="{{ $order->product->price }}" readonly></td>
+									<td><input type="number" name="order_quantity" id="order_quantity" placeholder="1"></td>
+									<input type="hidden" name="product_quantity" id="product_quantity" value="{{ $order->product_quantity }}">
+									<td><input type="number" id="updated_price" value="{{ $order->product->price }}" readonly></td>
 								</tr>
 								@endforeach
+							</form>
 							</tbody>
 						</table>
 					</div>
 				</div>
+
 				<div class="calculate_shoping_area">
 					<h3 class="cart_single_title">Calculate Shoping <span><i class="icon_minus-06"></i></span></h3>
 					<div class="calculate_shop_inner">
-						<form class="calculate_shoping_form row" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+						<form class="calculate_shoping_form row" action="{{ route('bill_details') }}" method="POST" id="proceedForm" novalidate="novalidate">
+							@csrf
+							<input type="hidden" name="total_price" value="{{ $total_price }}">
 							<div class="form-group col-lg-12">
-								<select class="selectpicker">
+								<select name="country" class="selectpicker">
 									<option>Nepal </option>
 									<option>United Kingdom (UK) </option>
 									<option>United State America (USA)</option>
@@ -81,7 +89,6 @@
 								<input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode / Zip">
 							</div>
 							<div class="form-group col-lg-12">
-								<button type="submit" value="submit" class="btn submit_btn form-control">update totals</button>
 							</div>
 						</form>
 					</div>
@@ -100,18 +107,84 @@
 						<h3 class="cart_single_title">Discount Cupon</h3>
 						<div class="cart_total_inner">
 							<ul>
-								<li><a href="#"><span>Cart Subtotal</span> $400.00</a></li>
 								<li><a href="#"><span>Shipping</span> Free</a></li>
-								<li><a href="#"><span>Totals</span> $400.00</a></li>
+								<li><a href="#"><span>Totals</span> {{ $total_price }}</a></li>
 							</ul>
 						</div>
-						<button type="submit" class="btn btn-primary update_btn">update cart</button>
-						<a href="{{ route('checkout_register') }}" class="btn btn-primary checkout_btn">proceed to checkout</a>
+						<a href="#" id="proceed" class="btn btn-primary checkout_btn">proceed to checkout</a>
 					</div>
+
 				</div>
+
 			</div>
 		</div>
 	</div>
 </section>
+@else 
+
+<!--================Categories Banner Area =================-->
+        <section class="solid_banner_area">
+            <div class="container">
+                <div class="solid_banner_inner">
+                    <h3>empty cart</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="track.html">empty cart</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--================End Categories Banner Area =================-->
+        
+        <!--================login Area =================-->
+        <section class="emty_cart_area p_100">
+            <div class="container">
+                <div class="emty_cart_inner">
+                    <i class="icon-handbag icons"></i>
+                    <h3>Your Cart is Empty</h3>
+                    <h4>back to <a href="#">shopping</a></h4>
+                </div>
+            </div>
+        </section>
+        <!--================End login Area =================-->
+
+        @endif
+
+<script>
+	$(document).ready(function(){
+		$("#order_quantity").change(function(){
+			var order_quantity = $("#order_quantity").val();
+			var actual_product_price = $("#product_price").val();
+			var product_quantity = $("#product_quantity").val();
+			var updatedPrice = order_quantity * actual_product_price;
+			$("#updated_price").val(updatedPrice);
+
+			if(parseInt(order_quantity) > parseInt(product_quantity)) {
+				alert("You can't have more value than in stock!");
+				$("#order_quantity").val('1');
+				$("#updated_price").val(actual_price);
+
+			} else if(order_quantity == 0) {
+				alert("Sorry! you can't submit empty value");
+				$("#order_quantity").val('1');
+				$("#updated_price").val(actual_price);
+			}
+		});	
+		$("#sub").on('click',function(){
+			$("#billForm").submit();
+		})	
+		$("#del").on('click',function(){
+			$(".del-form").submit();
+		})	
+
+		$('#proceed').on('click',function(e){
+			e.preventDefault();
+			$("#proceedForm").submit();
+		})
+	});
+
+</script>
+
 <!--================End Shopping Cart Area =================-->
 @endsection
+

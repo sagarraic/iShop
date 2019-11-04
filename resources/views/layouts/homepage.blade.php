@@ -26,6 +26,8 @@
         
         <link href="/user/css/style.css" rel="stylesheet">
         <link href="/user/css/responsive.css" rel="stylesheet">
+         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="/user/js/jquery-3.2.1.min.js"></script>
         
     </head>
     <body>
@@ -122,7 +124,6 @@
                                     
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                         </ul>
@@ -223,8 +224,7 @@
         
         
         
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="/user/js/jquery-3.2.1.min.js"></script>
+       
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="/user/js/popper.min.js"></script>
         <script src="/user/js/bootstrap.min.js"></script>

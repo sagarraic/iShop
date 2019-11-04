@@ -24,16 +24,20 @@
 			</div>
 			<form class="track_form row">
 				<div class="col-lg-12 form-group">
-					<label for="text">Order ID</label>
-					<input class="form-control" type="text" id="text" disabled>
+					<label for="text">Ordered Date</label>
+					<input class="form-control" type="text" value="{{ $bill_id->created_at }}" disabled>
 				</div>
 				<div class="col-lg-12 form-group">
-					<label for="email">billing email</label>
-					<input class="form-control" type="email" id="email" disabled>
+					<label for="email">bill email</label>
+					<input class="form-control" type="text" value="{{ $bill_id->email }}" disabled>
+				</div>
+				<div class="col-lg-12 form-group">
+					<label for="email">bill ID</label>
+					<input class="form-control" type="email" value="{{ $bill_id->id }}" disabled>
 				</div>
 				<div class="col-lg-12 form-group">
 					<label for="number">Total Amount</label>
-					<input class="form-control" type="number" id="total" disabled>
+					<input class="form-control" type="number" value="{{ $bill_id->total }}" disabled>
 				</div>
 				<div class="col-lg-12 form-group">
 					<button type="submit" value="submit" class="btn subs_btn form-control">place order</button>

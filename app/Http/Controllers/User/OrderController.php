@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use Auth;
 use App\Product;
+use App\Billing;
 
 class OrderController extends Controller
 {
@@ -17,16 +18,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
-        // foreach ($orders as $order) {
-        //     dump($order->id);
-        //     dump($order->user->email);
-        //     dump($order->product->product_name);
-
-        //     dump($order->product->image);
-        //     # code...
-        // }
-        return view('order.content',compact('orders'));  
+        $total = Order::with('product')->where('user_id',Auth::user()->id)->where('status',0)->get();
+        $total_price = collect($total)->sum('product.price');
+        $orders = Order::where('user_id',Auth::user()->id)->where('status',0)->get();
+        // dd($orders->isEmpty());
+        return view('order.content',compact('orders','total_price'));  
     }
 
     /**
@@ -109,14 +105,40 @@ class OrderController extends Controller
     }
 
     public function checkout_register(){
-        $status = Order::where('status',0)->where('user_id',Auth::user()->id);
-        $status->update([
-            'status'=> 1,
-        ]);
+        
         return view('order.checkout_register');
     }
 
-    public function bill_details(){
-        return view('order.bill_details');
+    public function bill_details(Request $request){
+        // $orders = $request->all();
+        $country = $request->country;
+        $state = $request->state;
+        $zip = $request->zip;
+        //bill create
+        //total
+        // dd($request->total_price);
+        $bill=Billing::create(['total'=>$request->total_price]);
+        $bill_id = $bill->id;
+
+        $query = Order::where('status',0)->where('user_id',Auth::user()->id);
+        $query->update([
+            // 'status'=> 1,
+            //bill id
+            'country'=>$country,
+            'state'=>$state,
+            'zip'=>$zip,
+            'billing_id' =>$bill_id,
+        ]);
+        //
+        return redirect('/users/order/bill_details');
     }
+
+    public function bill_details_show()
+    {
+        $query = Order::with('billing')->where('user_id',Auth::user()->id)->where('status',0)->get();
+        $bill_id = $query->first()->billing;
+
+        return view('order.bill_details',compact('bill_id'));
+    }
+
 }

@@ -37,9 +37,11 @@ Route::prefix('admin')->name('admin.')->middleware(['isAdmin'])->group(function(
 // User Route Start
 Route::get('users/homepage','User\ProductController@homepage')->name('homepage');
 Route::get('users/my-products','User\ProductController@myproducts')->name('products.myproducts');
+Route::get('users/my-products-api','User\ProductController@myproductsApi')->name('products.myproductsApi');
 Route::resource('products','User\ProductController');
 Route::get('users/order/checkout_register','User\OrderController@checkout_register')->name('checkout_register');
-Route::get('users/order/bill_details','User\OrderController@bill_details')->name('bill_details');
+Route::post('users/order/bill_details','User\OrderController@bill_details')->name('bill_details');
+Route::get('users/order/bill_details','User\OrderController@bill_details_show')->name('bill_details_show');
 Route::resource('orders','User\OrderController');
 
 
