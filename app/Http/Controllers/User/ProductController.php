@@ -8,6 +8,7 @@ use App\Product;
 use App\Category;
 use Auth;
 use File;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -68,6 +69,22 @@ class ProductController extends Controller
 
     public function storeapi(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'product_name'=>'required',
+            'product_description'=>'required',
+            'product_category'=>'required',
+            'user_id'=>'required',
+            'price'=>'required'
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            if ($errors->first('product_name')) {
+                $errormessage = $errors->first('product_name');
+            }
+            return response()->json(['status'=> true, 'message' => $errormessage]);
+        }
+
         $image = request('image');
         $new_name = rand() . '.' . $image-> getClientOriginalExtension();
         $image->move(public_path('/uploads'),$new_name);
@@ -75,10 +92,10 @@ class ProductController extends Controller
         $saved = Product::create(array_merge(['image'=>$new_name,'image_url'=>'http://127.0.0.1:8888/laravel/ishop/public/uploads/'.$new_name,'user_id'=>1],$request->except(['image'])));
 
         if (!$saved) {
-            return response()->json(['result' => 'failure']);
+            return response()->json(['status'=> false, 'message' => 'Something went wrong, please check again.']);
         }
 
-        return response()->json(['result' => 'success']);
+        return response()->json(['status'=> true, 'message' => 'Your data has been saved successfully.']);
     }
 
     /**
@@ -97,7 +114,7 @@ class ProductController extends Controller
     {
         $user_id = auth()->user()->id;
         $product = Product::where('user_id',$user_id)->get();
-        dd($product->toArray());
+        // dd($product->toArray());
         return view('product.myproducts',compact('product'));
     }
 
@@ -122,6 +139,20 @@ class ProductController extends Controller
         return view('product.edit_product', compact('product'));
     }
 
+    // public function editapi(Product $product, $id)
+    // {
+    //     $product = Product::where('id',$id)->get()->first();
+    //     $product_id = $product->id;
+
+    //     if(!$product) {
+    //         return response()->json(['error'=>false, 'message' => 'There went something error during retrieving the product. Please try again.']);
+    //     }
+    //     else {
+    //         return response()->json(['error'=>true, 'data' => ['product_id'=>$product_id]]);
+    //     }
+
+    // }
+
     /**
      * Update the specified resource in storage.
      *
@@ -131,8 +162,30 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        // dd($product);
         $product->update(request(['product_name','product_description','product_category','price','image']));
         return redirect('/products');
+    }
+
+    public function updateapi(Request $request, $id) 
+    {
+        $product_id = Product::find($id);
+        if(!$product_id) 
+        {
+            return response()->json(['status'=> false, 'message' => 'There was something wrong during updating the product' ]);
+        } 
+        
+        $array = $request->all();
+        // return response()->json(['status'=> $array]);
+        $saved = $product_id->update($array);
+
+
+        if(!$saved)
+        {
+            return response()->json(['status'=> false, 'message' => 'Your product has not been updated successfully' ]);
+        } else {
+            return response()->json(['status'=> true, 'message' => 'Your product has been updated successfully' ]);
+        }
     }
 
     /**
@@ -145,5 +198,22 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect('/products');
+    }
+
+    public function destroyapi($id)
+    {
+        $product_id = Product::find($id);
+        $saved = $product_id->delete();
+        if(!$saved)
+        {
+            return response()->json(['status'=> false, 'message' => 'Your product has not been deleted successfully' ]);
+        } else {
+            return response()->json(['status'=> true, 'message' => 'Your product has been deleted successfully' ]);
+        }
+    }
+
+    public function test()
+    {
+        return response()->json(['error'=> 'test']);
     }
 }

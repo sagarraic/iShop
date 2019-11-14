@@ -176,7 +176,7 @@
                                 </div>
                                 <ul>
                                     <li><a href="#">My account</a></li>
-                                    <li><a href="#">Ordr History</a></li>
+                                    <li><a href="#">Order History</a></li>
                                     <li><a href="#">Wish List</a></li>
                                     <li><a href="#">Newsletter</a></li>
                                     <li><a href="#">Contact Us</a></li>
@@ -203,7 +203,7 @@
                                 </div>
                                 <ul>
                                     <li><a href="#">My account</a></li>
-                                    <li><a href="#">Ordr History</a></li>
+                                    <li><a href="#">Order History</a></li>
                                     <li><a href="#">Wish List</a></li>
                                     <li><a href="#">Newsletter</a></li>
                                 </ul>
